@@ -1,5 +1,13 @@
 package com.example.gbernardeau.gestionstock.METIER;
 
+/*
+
+ * Nom de la classe : Article
+ * Ajoutée le 04/05/2018
+ * Descriptif : Classe permettant de gérer un objet Article.
+
+ */
+
 public class Article {
     private String code;
     private String designation;
@@ -11,6 +19,12 @@ public class Article {
         this.stock = stock;
     }
 
+    /*
+
+     * Ajoutée le 04/05/2018
+     * Descriptif : Méthodes getters/setters pour le code, designation et stock.
+
+     */
     public String getCode() {
         return code;
     }
