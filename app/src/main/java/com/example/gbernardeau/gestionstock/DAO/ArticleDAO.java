@@ -81,18 +81,18 @@ public class ArticleDAO extends DAO<Article> {
 
     public ArrayList<Article> read() {
         ArrayList<Article> listArticle = new ArrayList<Article>();
-        int id;
+        String code;
         String lib;
-        float coeff;
+        int stock;
         Article ma;
         Cursor res;
         res = db.query(Table_ARTICLE, null, null, null, null, null, null);
         res.moveToFirst();
         while (!res.isAfterLast()) {
-            id = res.getInt(0);
+            code = res.getString(0);
             lib = res.getString(1);
-            coeff = res.getFloat(2);
-            ma = new Article("code", "lib", 0);
+            stock = res.getInt(2);
+            ma = new Article(code, lib, stock);
             listArticle.add(ma);
         }
 
