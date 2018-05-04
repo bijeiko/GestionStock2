@@ -1,5 +1,6 @@
 package com.example.gbernardeau.gestionstock.METIER;
 
+
 public class Fiches {
     private int id;
     private int quantite;
@@ -7,6 +8,7 @@ public class Fiches {
     public Fiches(int id, int quantite) {
         this.id = id;
         this.quantite = quantite;
+
     }
 
     public int getId() {
