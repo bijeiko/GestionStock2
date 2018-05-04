@@ -77,10 +77,9 @@ public class EmplacementDAO extends DAO<Emplacement> {
     }
 
     public ArrayList<Emplacement> read() {
-        ArrayList<Emplacement> listArticle = new ArrayList<Emplacement>();
+        ArrayList<Emplacement> listEmplacement = new ArrayList<Emplacement>();
         int id;
         String lib;
-        float coeff;
         Emplacement ma;
         Cursor res;
         res = db.query(Table_EMPLACEMENT, null, null, null, null, null, null);
@@ -89,10 +88,10 @@ public class EmplacementDAO extends DAO<Emplacement> {
             id = res.getInt(0);
             lib = res.getString(1);
             ma = new Emplacement(id, lib);
-            listArticle.add(ma);
+            listEmplacement.add(ma);
         }
 
-        return listArticle;
+        return listEmplacement;
     }
 
 }
