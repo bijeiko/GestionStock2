@@ -11,7 +11,7 @@ import com.example.gbernardeau.gestionstock.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button bSearch, bTri, Accueil, CreateFiches, ToutesLesFiches, ToutLesArticles;
+    private Button bSearch, bTri, CreateFiches, ToutesLesFiches, ToutLesArticles;
     private EditText Search;
 
     @Override
@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(activityfiche);
             }
         });
-
 
     }
 
