@@ -1,0 +1,55 @@
+package com.example.gbernardeau.gestionstock.IHM;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+
+import com.example.gbernardeau.gestionstock.R;
+
+/**
+ * Created by gbernardeau on 03/04/2018.
+ */
+
+
+public class ListeArticleActivity extends AppCompatActivity {
+
+    private Button bSearch, bTri, Accueilbtn, ToutesLesFiches, CreateFiche;
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.liste_article);
+
+        // Bouton navigation
+        Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
+        Accueilbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activityaccueil = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(activityaccueil);
+            }
+        });
+        CreateFiche = (Button) findViewById(R.id.CreateFiche);
+        CreateFiche.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activitycreationfiche = new Intent(getApplicationContext(), CreationFicheActivity.class);
+                startActivity(activitycreationfiche);
+            }
+        });
+
+        ToutesLesFiches = (Button) findViewById(R.id.ToutesLesFiches);
+        ToutesLesFiches.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activityfiches = new Intent(getApplicationContext(), ListeFichesActivity.class);
+                startActivity(activityfiches);
+            }
+        });
+
+    }
+
+
+
+}
