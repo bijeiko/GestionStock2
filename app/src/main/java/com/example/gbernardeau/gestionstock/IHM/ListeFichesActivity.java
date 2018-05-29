@@ -3,13 +3,14 @@ package com.example.gbernardeau.gestionstock.IHM;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 
-import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
-import com.example.gbernardeau.gestionstock.METIER.Fiches;
+import com.example.gbernardeau.gestionstock.DAO.EtatDAO;
+import com.example.gbernardeau.gestionstock.METIER.Etat;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class ListeFichesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_fiches);
-        ArrayList<Fiches> listesfiches = new ArrayList<Fiches>();
+        ArrayList<Etat> listesetats = new ArrayList<Etat>();
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
         Accueilbtn.setOnClickListener(new View.OnClickListener() {
@@ -56,19 +57,20 @@ public class ListeFichesActivity extends AppCompatActivity {
 
 
         //Création d'une instance de ma classe ETATDAO
-        FichesDAO fiches = new FichesDAO(this);
+        EtatDAO etats = new EtatDAO(this.getApplicationContext());
 
         //On ouvre la base de données pour écrire dedans
-        fiches.open();
-
+        etats.open();
+        Log.v(etats.toString(), "ca passe ici");
         //On insère le livre que l'on vient de créer
-        listesfiches = fiches.read();
+        listesetats = etats.read();
+        Log.v(etats.toString(), "ensuite ici");
 
-        for (Fiches uneFiche: listesfiches) {
-            System.out.println(uneFiche.getQuantite());
+        for (Etat unEtat: listesetats) {
+            Log.v(etats.toString(), unEtat.getLibelle());
         }
 
-        fiches.close();
+        etats.close();
     }
 
 }

@@ -34,7 +34,7 @@ public class EtatDAO extends DAO<Etat> {
      * @param context
      */
     public EtatDAO(Context context) {
-        SQLiteOpenHelper dbGestionStock = new SQLiteGestionStock(context);
+        dbGestionStock = new SQLiteGestionStock(context);
     }
     /**
      * Permet d'ouvrir la base de données.

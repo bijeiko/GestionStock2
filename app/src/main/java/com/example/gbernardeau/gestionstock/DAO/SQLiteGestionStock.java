@@ -20,13 +20,20 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL("DROP TABLE IF EXISTS FAMILLE");
-            db.execSQL("DROP TABLE IF EXISTS FICHE");
+            db.execSQL("DROP TABLE IF EXISTS FICHEs");
             db.execSQL("DROP TABLE IF EXISTS ETAT");
             db.execSQL("DROP TABLE IF EXISTS EMPLACEMENT");
             db.execSQL("DROP TABLE IF EXISTS RAYON");
             db.execSQL("DROP TABLE IF EXISTS ARTICLE");
             db.execSQL("DROP TABLE IF EXISTS APPARTENIR");
 
+<<<<<<< HEAD
+            db.execSQL("CREATE TABLE ETAT ( ID integer AUTO_INCREMENT, LIBELLE CHAR(50) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (id))");
+            db.execSQL("INSERT INTO ETAT (libelle) VALUES ('Fini')");
+            db.execSQL("INSERT INTO ETAT (libelle) VALUES ('En Attente')");
+
+
+=======
             db.execSQL("CREATE TABLE IF NOT EXISTS FAMILLE  (ID INTEGER AUTOINCREMENT PRIMARY KEY, LIBELLE CHAR(32) NULL)");
             db.execSQL("CREATE TABLE IF NOT EXISTS FICHE (ID INTEGER AUTOINCREMENT PRIMARY KEY, ID_AVOIR CHAR(32) NOT NULL, QUANTITE CHAR(32) NULL, DATE_INSERTION DATE NOT NULL)");
             db.execSQL("CREATE  INDEX I_FK_FICHE_ETAT ON FICHE (ID_AVOIR ASC);");
@@ -53,6 +60,7 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
             db.execSQL("INSERT INTO RAYON (LIBELLE) VALUES ('RC5')");
             db.execSQL("INSERT INTO EMPLACEMENT (ID_CORRESPOND, LIBELLE) VALUES (1, 'EB3')");
             db.execSQL("INSERT INTO ARTICLE (CODE, ID_CONTENIR, DESIGNATION, STOCK) VALUES ('FRLKJ63', 1, 'Ordinateur portable', 27)");
+>>>>>>> cf2b7d7025a30a4878ddbd7163216382f41f1039
 
 
         } catch (Exception e) {
