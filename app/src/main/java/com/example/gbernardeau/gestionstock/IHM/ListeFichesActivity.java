@@ -5,8 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+
+import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
+import com.example.gbernardeau.gestionstock.METIER.Fiches;
 import com.example.gbernardeau.gestionstock.R;
+
+import java.util.ArrayList;
 
 
 /**
@@ -19,7 +25,7 @@ public class ListeFichesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_fiches);
-
+        ArrayList<Fiches> listesfiches = new ArrayList<Fiches>();
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
         Accueilbtn.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +53,22 @@ public class ListeFichesActivity extends AppCompatActivity {
             }
         });
 
+
+
+        //Création d'une instance de ma classe ETATDAO
+        FichesDAO fiches = new FichesDAO(this);
+
+        //On ouvre la base de données pour écrire dedans
+        fiches.open();
+
+        //On insère le livre que l'on vient de créer
+        listesfiches = fiches.read();
+
+        for (Fiches uneFiche: listesfiches) {
+            System.out.println(uneFiche.getQuantite());
+        }
+
+        fiches.close();
     }
 
 }
