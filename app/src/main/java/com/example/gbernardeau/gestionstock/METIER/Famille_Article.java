@@ -1,15 +1,11 @@
 package com.example.gbernardeau.gestionstock.METIER;
 
-/*
+/**
 
  * Nom de la classe : Famille_Article
  * Ajoutée le 29/05/2018
  * Descriptif : Classe permettant de gérer un objet Famille_Article.
 
- */
-
-/**
- * Created by gbernardeau on 04/05/2018.
  */
 
 public class Famille_Article {
@@ -23,7 +19,7 @@ public class Famille_Article {
         this.codearticle = codearticle;
     }
 
-    /*
+    /**
 
      * Ajoutée le 29/05/2018
      * Descriptif : Méthodes permettant d'obtenir l'Id, l'Idfamille et le code d'article d'un emplacement ainsi que ses

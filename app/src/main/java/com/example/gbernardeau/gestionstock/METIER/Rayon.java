@@ -1,6 +1,6 @@
 package com.example.gbernardeau.gestionstock.METIER;
 
-/*
+/**
 
  * Nom de la classe : Rayon
  * Ajoutée le 29/05/2018
@@ -17,7 +17,7 @@ public class Rayon {
         this.libelle = libelle;
     }
 
-    /*
+    /**
 
      * Ajoutée le 29/05/2018
      * Descriptif : Méthodes permettant d'obtenir l'Id et le libellé d'un emplacement ainsi que ses

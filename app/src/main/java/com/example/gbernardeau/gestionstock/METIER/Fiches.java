@@ -1,6 +1,6 @@
 package com.example.gbernardeau.gestionstock.METIER;
 
-/*
+/**
 
  * Nom de la classe : Fiches
  * Ajoutée le 29/05/2018
@@ -19,7 +19,7 @@ public class Fiches {
 
     }
 
-    /*
+    /**
 
      * Ajoutée le 29/05/2018
      * Descriptif : Méthodes permettant d'obtenir l'Id et la quantité d'un emplacement ainsi que ses
