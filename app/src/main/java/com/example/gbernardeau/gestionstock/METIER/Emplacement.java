@@ -40,3 +40,6 @@ public class Emplacement {
         this.libelle = libelle;
     }
 }
+
+
+
