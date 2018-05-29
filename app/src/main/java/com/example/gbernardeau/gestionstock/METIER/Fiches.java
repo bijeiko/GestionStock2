@@ -1,5 +1,13 @@
 package com.example.gbernardeau.gestionstock.METIER;
 
+/*
+
+ * Nom de la classe : Fiches
+ * Ajoutée le 29/05/2018
+ * Descriptif : Classe permettant de gérer un objet Fiches.
+
+ */
+
 
 public class Fiches {
     private int id;
@@ -10,6 +18,15 @@ public class Fiches {
         this.quantite = quantite;
 
     }
+
+    /*
+
+     * Ajoutée le 29/05/2018
+     * Descriptif : Méthodes permettant d'obtenir l'Id et la quantité d'un emplacement ainsi que ses
+     * setter pour l'Id et la quantité.
+
+     */
+
 
     public int getId() {
         return id;
