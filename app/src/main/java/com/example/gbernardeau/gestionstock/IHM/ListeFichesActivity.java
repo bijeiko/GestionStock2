@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.example.gbernardeau.gestionstock.R;
 
+
 /**
  * Created by gbernardeau on 03/04/2018.
  */
@@ -45,6 +46,7 @@ public class ListeFichesActivity extends AppCompatActivity {
                 startActivity(activityarticle);
             }
         });
+
     }
 
 }

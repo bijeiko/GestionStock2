@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import java.util.List;
 
+import com.example.gbernardeau.gestionstock.DAO.EtatDAO;
 import com.example.gbernardeau.gestionstock.R;
 
 public class MainActivity extends AppCompatActivity {
+
 
     private Button bSearch, bTri, Accueil, CreateFiches, ToutesLesFiches, ToutLesArticles;
     private EditText Search;
@@ -48,5 +51,4 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
 }
