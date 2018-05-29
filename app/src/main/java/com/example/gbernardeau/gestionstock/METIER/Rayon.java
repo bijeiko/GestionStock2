@@ -7,7 +7,7 @@ package com.example.gbernardeau.gestionstock.METIER;
  */
 
 public class Rayon {
-    private int id;
+    private Integer id;
     private String libelle;
 
     /**
@@ -15,7 +15,7 @@ public class Rayon {
      * @param id
      * @param libelle
      */
-    public Rayon(int id, String libelle) {
+    public Rayon(Integer id, String libelle) {
         this.id = id;
         this.libelle = libelle;
     }
@@ -24,7 +24,7 @@ public class Rayon {
      * Permet de retourner l'id.
      * @return id
      */
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -32,7 +32,7 @@ public class Rayon {
      * Permet de définir l'id passé en paramètre.
      * @param id
      */
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

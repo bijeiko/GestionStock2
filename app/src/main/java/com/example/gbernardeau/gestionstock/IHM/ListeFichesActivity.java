@@ -10,8 +10,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-import com.example.gbernardeau.gestionstock.DAO.EtatDAO;
-import com.example.gbernardeau.gestionstock.METIER.Etat;
+import com.example.gbernardeau.gestionstock.DAO.RayonDAO;
+import com.example.gbernardeau.gestionstock.METIER.Rayon;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class ListeFichesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_fiches);
-        ArrayList<Etat> listesetats = new ArrayList<Etat>();
+        ArrayList<Rayon> listesetats = new ArrayList<Rayon>();
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
         Accueilbtn.setOnClickListener(new View.OnClickListener() {
@@ -59,13 +59,13 @@ public class ListeFichesActivity extends AppCompatActivity {
 
 
         //Création d'une instance de ma classe ETATDAO
-        EtatDAO etats = new EtatDAO(this.getApplicationContext());
+        RayonDAO etats = new RayonDAO(this.getApplicationContext());
 
         //On ouvre la base de données pour écrire dedans
         etats.open();
         listesetats = etats.read();
-        for (Etat unEtat: listesetats) {
-            Log.v(unEtat.getId().toString(), "etat");
+        for (Rayon unEtat: listesetats) {
+            Log.v(unEtat.getLibelle().toString(), "etat");
 
         }
 
