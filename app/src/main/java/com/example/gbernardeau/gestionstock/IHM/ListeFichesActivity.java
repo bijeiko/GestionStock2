@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 
 public class ListeFichesActivity extends AppCompatActivity {
     private Button Accueilbtn, CreateFiche, ToutLesArticles;
+    private ListView Listfiches;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,13 +63,10 @@ public class ListeFichesActivity extends AppCompatActivity {
 
         //On ouvre la base de données pour écrire dedans
         etats.open();
-        Log.v(etats.toString(), "ca passe ici");
-        //On insère le livre que l'on vient de créer
         listesetats = etats.read();
-        Log.v(etats.toString(), "ensuite ici");
-
         for (Etat unEtat: listesetats) {
-            Log.v(etats.toString(), unEtat.getLibelle());
+            Log.v(unEtat.getId().toString(), "etat");
+
         }
 
         etats.close();
