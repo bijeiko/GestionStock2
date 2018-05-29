@@ -1,5 +1,11 @@
 package com.example.gbernardeau.gestionstock.METIER;
+/*
 
+ * Nom de la classe : Etat
+ * Ajoutée le 29/05/2018
+ * Descriptif : Classe permettant de gérer un objet Etat.
+
+ */
 public class Etat {
     private int id;
     private String libelle;
@@ -8,7 +14,13 @@ public class Etat {
         this.id = id;
         this.libelle = libelle;
     }
+    /*
 
+     * Ajoutée le 04/05/2018
+     * Descriptif : Méthodes permettant d'obtenir l'Id et le libellé d'un emplacement ainsi que ses
+     * setter pour l'Id et le libellé.
+
+     */
     public int getId() {
         return id;
     }

@@ -10,7 +10,6 @@ import com.example.gbernardeau.gestionstock.METIER.Article;
 
 import java.util.ArrayList;
 
-
 public class ArticleDAO extends DAO<Article> {
 
     private SQLiteGestionStock dbGestionStock;
