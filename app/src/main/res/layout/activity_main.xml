@@ -200,6 +200,7 @@
             android:orientation="horizontal">
 
             <ListView
+                android:id="@+id/ListViewAccueil"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="11.03" />
