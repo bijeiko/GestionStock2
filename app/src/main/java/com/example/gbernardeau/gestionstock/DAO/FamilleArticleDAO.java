@@ -12,28 +12,51 @@ import java.util.ArrayList;
 
 
 public class FamilleArticleDAO extends DAO<Famille_Article> {
+    /**
 
+     * <p>Nom de la classe : FamilleArticleDAO;</p>
+     * <p>Ajoutée le 29/05/2018;</p>
+     * Descriptif : Classe permettant de gérer un objet FamilleArticleDAO.
+
+     */
     private SQLiteGestionStock dbGestionStock;
 
     private static final String Table_FAMILLE_ARTICLE = "FAMILLEARTICLE";
     private static final String COL_ID = "ID";
     private static final String COL_ID_FAMILLE = "ID_FAMILLE";
     private static final String COL_CODE = "CODE_ARTICLE";
-
+    /**
+     * Les constantes sont définis avec les valeurs correspondantes.
+     */
     private SQLiteDatabase db;
-
+    /**
+     * Permet d'instancier un nouvel objet de SQLiteGestionStock en tenant compte de context passé en paramètre.
+     * @param context
+     */
     public FamilleArticleDAO(Context context) {
         SQLiteOpenHelper dbGestionStock = new SQLiteGestionStock(context);
     }
 
+    /**
+     * Permet d'ouvrir la base de données.
+     */
     public void open() {
         db = dbGestionStock.getWritableDatabase();
     }
 
+    /**
+     * Permet de fermer la base de données.
+     */
     public void close() {
         db.close();
     }
 
+    /**
+     * Permet d'effectuer un INSERT en tenant compte de ma qui est un objet d'Famille_Article.
+     * En fonction du résultat, un booléen sera retourné.
+     * @param ma
+     * @return res
+     */
     public boolean insert(Famille_Article ma) {
         boolean res;
         long insert;
@@ -47,7 +70,12 @@ public class FamilleArticleDAO extends DAO<Famille_Article> {
         }
         return res;
     }
-
+    /**
+     * Permet d'effectuer un UPDATE en tenant compte de obj qui est un objet de Famille_Article, passé en paramètre.
+     * La fonction retourne un booléen en fonction du résultat.
+     * @param obj
+     * @return res
+     */
     public boolean update(Famille_Article obj) {
         boolean res;
         int update;
@@ -61,7 +89,12 @@ public class FamilleArticleDAO extends DAO<Famille_Article> {
         }
         return res;
     }
-
+    /**
+     * Permet d'effectuer un DELETE en tenant compte de obj qui est un objet de Famille_Article, passé en paramètre.
+     * La fonction retourne un booléen en fonction du résultat.
+     * @param obj
+     * @return res
+     */
     public boolean delete(Famille_Article obj) {
         boolean res;
         int delete;
@@ -72,13 +105,21 @@ public class FamilleArticleDAO extends DAO<Famille_Article> {
         }
         return res;
     }
-
+    /**
+     * Permet d'effectuer un READ par le biais d'un curseur qui permet d'intéragir avec les résultats d'une requête SQL.
+     * Id est passé en paramètre et la fonction retourne uneFamille de la classe Famille_Article.
+     * @param id
+     * @return unArticle
+     */
     public Famille_Article read(long id) {
         Cursor res = db.query(Table_FAMILLE_ARTICLE, null, null, null, null, null, null);
         Famille_Article uneFamille = new Famille_Article(res.getInt(0), res.getInt(1), res.getString(2));
         return uneFamille;
     }
-
+    /**
+     * Fonction retournant un ArrayList peuplé de curseur ayant des données qui sont ajoutées à chaque tour de boucle.
+     * @return listFamilleArticle
+     */
     public ArrayList<Famille_Article> read() {
         ArrayList<Famille_Article> listFamilleArticle = new ArrayList<Famille_Article>();
         int id;

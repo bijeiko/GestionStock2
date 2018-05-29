@@ -1,7 +1,7 @@
 package com.example.gbernardeau.gestionstock.DAO;
 
 /**
- * Created by gbernardeau on 08/02/2018.
+ * Classe mère faisant hériter de ses méthodes à ses classes filles.
  */
 
 public abstract class DAO<T> {

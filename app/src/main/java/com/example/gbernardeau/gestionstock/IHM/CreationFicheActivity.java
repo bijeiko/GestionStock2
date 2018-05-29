@@ -12,10 +12,26 @@ import com.example.gbernardeau.gestionstock.R;
  * Created by gbernardeau on 03/04/2018.
  */
 
+/**
+ * Classe correspondant à la page Création de fiches.
+ */
 
 public class CreationFicheActivity extends AppCompatActivity {
-
+    /**
+     * Ses attributs sont des boutons qui sont :
+     * celui de recherche
+     * celui de tri
+     * celui de redirection à l'acceuil
+     * celui de redirection à Toutes les fiches
+     * celui de redirection à Tout les articles
+     */
     private Button bSearch, bTri, accueilbtn, ToutesLesFiches, ToutLesArticles;
+
+    /**
+     * A la création de la page, des boutons sont créés grâce à la View(R.Layout.creation_fiche)
+     * disposant de liens pour accéder aux différentes pages.
+     * @param savedInstanceState
+     */
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
