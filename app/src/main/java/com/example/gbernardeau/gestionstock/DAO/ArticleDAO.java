@@ -98,4 +98,9 @@ public class ArticleDAO extends DAO<Article> {
         return listArticle;
     }
 
+    public String hawaw(){
+        String corentin = "hawaw";
+        return corentin;
+    }
+
 }
