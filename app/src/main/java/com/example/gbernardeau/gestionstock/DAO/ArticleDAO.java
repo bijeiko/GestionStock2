@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.gbernardeau.gestionstock.METIER.Article;
 
 import java.util.ArrayList;
-
+  //test
 
 public class ArticleDAO extends DAO<Article> {
 
