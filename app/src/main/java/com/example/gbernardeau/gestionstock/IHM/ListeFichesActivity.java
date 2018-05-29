@@ -7,8 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.gbernardeau.gestionstock.DAO.EtatDAO;
-import com.example.gbernardeau.gestionstock.METIER.Etat;
+
+import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
+import com.example.gbernardeau.gestionstock.METIER.Fiches;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class ListeFichesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_fiches);
-        ArrayList<Etat> listeetat = new ArrayList<Etat>();
+        ArrayList<Fiches> listesfiches = new ArrayList<Fiches>();
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
         Accueilbtn.setOnClickListener(new View.OnClickListener() {
@@ -52,26 +53,22 @@ public class ListeFichesActivity extends AppCompatActivity {
             }
         });
 
+
+
         //Création d'une instance de ma classe ETATDAO
-        EtatDAO etat = new EtatDAO(this);
+        FichesDAO fiches = new FichesDAO(this);
 
         //On ouvre la base de données pour écrire dedans
-        etat.open();
+        fiches.open();
 
         //On insère le livre que l'on vient de créer
-        listeetat = etat.read();
+        listesfiches = fiches.read();
 
-        for (Etat unEtat: listeetat) {
-            System.out.println(unEtat.getLibelle());
+        for (Fiches uneFiche: listesfiches) {
+            System.out.println(uneFiche.getQuantite());
         }
 
-        //Si un livre est retourné (donc si le livre à bien été ajouté à la BDD)
-        if(etat != null){
-            //On affiche les infos du livre dans un Toast
-            Toast.makeText(this, etat.toString(), Toast.LENGTH_LONG).show();
-        }
-
-        etat.close();
+        fiches.close();
     }
 
 }
