@@ -2,8 +2,8 @@ package com.example.gbernardeau.gestionstock.METIER;
 
 /**
 
- * Nom de la classe : Article;
- * Ajoutée le 04/05/2018;
+ * <p>Nom de la classe : Article;</p>
+ * <p>Ajoutée le 04/05/2018;</p>
  * Descriptif : Classe permettant de gérer un objet Article.
 
  */
