@@ -12,8 +12,8 @@ package com.example.gbernardeau.gestionstock.METIER;
  * Classe possédant 3 attributs : id, idfamille & codearticle.
  */
 public class Famille_Article {
-    private int id;
-    private int idfamille;
+    private Integer id;
+    private Integer idfamille;
     private String codearticle;
 
     /**
@@ -22,7 +22,7 @@ public class Famille_Article {
      * @param idfamille est un entier
      * @param codearticle est une chaîne de caractère
      */
-    public Famille_Article(int id, int idfamille, String codearticle) {
+    public Famille_Article(Integer id, Integer idfamille, String codearticle) {
         this.id = id;
         this.idfamille = idfamille;
         this.codearticle = codearticle;
@@ -32,7 +32,7 @@ public class Famille_Article {
      * Permet d'obtenir l'id.
      * @return id
      */
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -40,7 +40,7 @@ public class Famille_Article {
      * Permet de définir l'id passé en paramètre.
      * @param id
      */
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -48,7 +48,7 @@ public class Famille_Article {
      * Permet d'obtenir l'idFamille.
      * @return idFamille
      */
-    public int getIdfamille() {
+    public Integer getIdfamille() {
         return idfamille;
     }
 
@@ -56,7 +56,7 @@ public class Famille_Article {
      * Permet de définir l'idFamille passé en paramètre.
      * @param idfamille
      */
-    public void setIdfamille(int idfamille) {
+    public void setIdfamille(Integer idfamille) {
         this.idfamille = idfamille;
     }
 

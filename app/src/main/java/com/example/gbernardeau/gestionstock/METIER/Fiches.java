@@ -12,15 +12,15 @@ package com.example.gbernardeau.gestionstock.METIER;
  * Classe possédant 2 attributs : id & quantite.
  */
 public class Fiches {
-    private int id;
-    private int quantite;
+    private Integer id;
+    private Integer quantite;
 
     /**
      *
      * @param id est un entier
      * @param quantite est un entier
      */
-    public Fiches(int id, int quantite) {
+    public Fiches(Integer id, Integer quantite) {
         this.id = id;
         this.quantite = quantite;
 
@@ -30,7 +30,7 @@ public class Fiches {
      * Permet de retourner l'id.
      * @return id
      */
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -38,7 +38,7 @@ public class Fiches {
      * Permet de définir l'id passé en paramètre.
      * @param id
      */
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -46,7 +46,7 @@ public class Fiches {
      * Permet de retourner la quantite.
      * @return quantite
      */
-    public int getQuantite() {
+    public Integer getQuantite() {
         return quantite;
     }
 
@@ -54,7 +54,7 @@ public class Fiches {
      * Permet de définir la quantite passée en paramètre.
      * @param quantite
      */
-    public void setQuantite(int quantite) {
+    public void setQuantite(Integer quantite) {
         this.quantite = quantite;
     }
 }

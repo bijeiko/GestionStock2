@@ -13,7 +13,7 @@ package com.example.gbernardeau.gestionstock.METIER;
  */
 public class Emplacement {
 
-    private int id;
+    private Integer id;
     private String libelle;
 
     /**
@@ -22,7 +22,7 @@ public class Emplacement {
      * @param libelle est une chaîne de caractère
      */
 
-    public Emplacement(int id, String libelle) {
+    public Emplacement(Integer id, String libelle) {
         this.id = id;
         this.libelle = libelle;
     }
@@ -31,7 +31,7 @@ public class Emplacement {
      *Permet de retourner l'id.
      * @return id
      */
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -39,7 +39,7 @@ public class Emplacement {
      * Permet de définir l'id passé en paramètre.
      * @param id
      */
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

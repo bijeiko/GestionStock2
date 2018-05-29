@@ -11,14 +11,14 @@ package com.example.gbernardeau.gestionstock.METIER;
 public class Article {
     private String code;
     private String designation;
-    private int stock;
+    private Integer stock;
 
     /**
      * @param code est une chaîne de caractère
      * @param designation est une chaîne de caractère
      * @param stock est un entier
      */
-    public Article(String code, String designation, int stock) {
+    public Article(String code, String designation, Integer stock) {
         this.code = code;
         this.designation = designation;
         this.stock = stock;
@@ -57,7 +57,7 @@ public class Article {
     /**
      Permet de définir le stock.
      */
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 }

@@ -30,6 +30,7 @@ public class ListeArticleActivity extends AppCompatActivity {
                 startActivity(activityaccueil);
             }
         });
+        // Bouton Créer fiche
         CreateFiche = (Button) findViewById(R.id.CreateFiche);
         CreateFiche.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +39,7 @@ public class ListeArticleActivity extends AppCompatActivity {
                 startActivity(activitycreationfiche);
             }
         });
-
+        // Bouton Toutes les fiches
         ToutesLesFiches = (Button) findViewById(R.id.ToutesLesFiches);
         ToutesLesFiches.setOnClickListener(new View.OnClickListener() {
             @Override
