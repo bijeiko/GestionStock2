@@ -15,14 +15,16 @@ public class FichesDAO extends DAO<Fiches> {
 
     private SQLiteGestionStock dbGestionStock;
 
-    private static final String Table_FICHES = "FICHES";
+    private static final String Table_FICHES = "FICHE";
     private static final String COL_ID = "ID";
+    private static final String COL_ID_AVOIR = "ID_AVOIR";
     private static final String COL_QUANTITE = "QUANTITE";
+    private static final String COL_DATE_INSERTION = "DATE_INSERTION";
 
     private SQLiteDatabase db;
 
     public FichesDAO(Context context) {
-        SQLiteOpenHelper dbGestionStock = new SQLiteGestionStock(context);
+        dbGestionStock = new SQLiteGestionStock(context);
     }
 
     public void open() {

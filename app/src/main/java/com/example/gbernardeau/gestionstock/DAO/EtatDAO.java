@@ -22,7 +22,7 @@ public class EtatDAO extends DAO<Etat> {
     private SQLiteDatabase db;
 
     public EtatDAO(Context context) {
-        SQLiteOpenHelper dbGestionStock = new SQLiteGestionStock(context);
+        dbGestionStock = new SQLiteGestionStock(context);
     }
 
     public void open() {
