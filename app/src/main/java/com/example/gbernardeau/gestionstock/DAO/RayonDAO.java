@@ -117,7 +117,7 @@ public class RayonDAO extends DAO<Rayon> {
      */
     public ArrayList<Rayon> read() {
         ArrayList<Rayon> listRayon = new ArrayList<Rayon>();
-        int id;
+        Integer id;
         String libelle;
         Rayon ma;
         Cursor res;
@@ -128,6 +128,7 @@ public class RayonDAO extends DAO<Rayon> {
             libelle = res.getString(1);
             ma = new Rayon(id, libelle);
             listRayon.add(ma);
+            res.moveToNext();
         }
 
         return listRayon;

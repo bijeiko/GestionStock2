@@ -11,6 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.gbernardeau.gestionstock.METIER.Etat;
 
@@ -117,7 +118,7 @@ public class EtatDAO extends DAO<Etat> {
      */
     public ArrayList<Etat> read() {
         ArrayList<Etat> listEtat = new ArrayList<Etat>();
-        int id;
+        Integer id;
         String lib;
         Etat ma;
         Cursor res;
@@ -128,6 +129,7 @@ public class EtatDAO extends DAO<Etat> {
             lib = res.getString(1);
             ma = new Etat(id, lib);
             listEtat.add(ma);
+            res.moveToNext();
         }
 
         return listEtat;

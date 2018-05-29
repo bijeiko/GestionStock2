@@ -25,14 +25,14 @@ public class FichesDAO extends DAO<Fiches> {
     private static final String COL_ID = "ID";
     private static final String COL_ID_AVOIR = "ID_AVOIR";
     private static final String COL_QUANTITE = "QUANTITE";
-<<<<<<< HEAD
+
     private static final String COL_DATE_INSERTION = "DATE_INSERTION";
 
-=======
+
     /**
      * Les constantes sont définis avec les valeurs correspondantes.
      */
->>>>>>> cf2b7d7025a30a4878ddbd7163216382f41f1039
+
     private SQLiteDatabase db;
     /**
      * Permet d'instancier un nouvel objet de SQLiteGestionStock en tenant compte de context passé en paramètre.

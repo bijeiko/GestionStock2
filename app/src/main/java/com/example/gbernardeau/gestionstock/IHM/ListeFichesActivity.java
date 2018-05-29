@@ -6,11 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
-import com.example.gbernardeau.gestionstock.DAO.EtatDAO;
-import com.example.gbernardeau.gestionstock.METIER.Etat;
+import com.example.gbernardeau.gestionstock.DAO.RayonDAO;
+import com.example.gbernardeau.gestionstock.METIER.Rayon;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
@@ -22,11 +23,12 @@ import java.util.ArrayList;
 
 public class ListeFichesActivity extends AppCompatActivity {
     private Button Accueilbtn, CreateFiche, ToutLesArticles;
+    private ListView Listfiches;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_fiches);
-        ArrayList<Etat> listesetats = new ArrayList<Etat>();
+        ArrayList<Rayon> listesetats = new ArrayList<Rayon>();
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
         Accueilbtn.setOnClickListener(new View.OnClickListener() {
@@ -57,17 +59,14 @@ public class ListeFichesActivity extends AppCompatActivity {
 
 
         //Création d'une instance de ma classe ETATDAO
-        EtatDAO etats = new EtatDAO(this.getApplicationContext());
+        RayonDAO etats = new RayonDAO(this.getApplicationContext());
 
         //On ouvre la base de données pour écrire dedans
         etats.open();
-        Log.v(etats.toString(), "ca passe ici");
-        //On insère le livre que l'on vient de créer
         listesetats = etats.read();
-        Log.v(etats.toString(), "ensuite ici");
+        for (Rayon unEtat: listesetats) {
+            Log.v(unEtat.getLibelle().toString(), "etat");
 
-        for (Etat unEtat: listesetats) {
-            Log.v(etats.toString(), unEtat.getLibelle());
         }
 
         etats.close();
