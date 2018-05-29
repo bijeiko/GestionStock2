@@ -33,7 +33,7 @@ public class RayonDAO extends DAO<Rayon> {
      * @param context
      */
     public RayonDAO(Context context) {
-        SQLiteOpenHelper dbGestionStock = new SQLiteGestionStock(context);
+        dbGestionStock = new SQLiteGestionStock(context);
     }
     /**
      * Permet d'ouvrir la base de données.

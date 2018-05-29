@@ -28,7 +28,8 @@ public class ListeFichesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_fiches);
-        ArrayList<Rayon> listesetats = new ArrayList<Rayon>();
+
+        ArrayList<Rayon> listesrayons = new ArrayList<Rayon>();
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
         Accueilbtn.setOnClickListener(new View.OnClickListener() {
@@ -59,17 +60,18 @@ public class ListeFichesActivity extends AppCompatActivity {
 
 
         //Création d'une instance de ma classe ETATDAO
-        RayonDAO etats = new RayonDAO(this.getApplicationContext());
+        RayonDAO rayons = new RayonDAO(this.getApplicationContext());
 
         //On ouvre la base de données pour écrire dedans
-        etats.open();
-        listesetats = etats.read();
-        for (Rayon unEtat: listesetats) {
-            Log.v(unEtat.getLibelle().toString(), "etat");
+        rayons.open();
+        listesrayons = rayons.read();
+
+        for (Rayon unRayon: listesrayons) {
+            Log.v(unRayon.getLibelle().toString(), "rayon");
 
         }
 
-        etats.close();
+        rayons.close();
     }
 
 }

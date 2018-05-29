@@ -24,7 +24,6 @@ public class Etat {
      Permet d'obtenir l'Id.
      */
     public Integer getId() {
-        Log.v(id.toString(), "id ");
         return id;
     }
     /**
