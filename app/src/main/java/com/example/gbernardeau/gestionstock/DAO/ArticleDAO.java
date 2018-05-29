@@ -10,6 +10,7 @@ import com.example.gbernardeau.gestionstock.METIER.Article;
 
 import java.util.ArrayList;
   //test
+//ceci est un autre test
 
 public class ArticleDAO extends DAO<Article> {
 
