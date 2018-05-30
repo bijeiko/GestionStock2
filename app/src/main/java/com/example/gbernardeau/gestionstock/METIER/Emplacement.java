@@ -14,7 +14,7 @@ package com.example.gbernardeau.gestionstock.METIER;
 public class Emplacement {
 
     private Integer id;
-    private Integer id_rayon;
+    private Integer idrayon;
     private String libelle;
 
     /**
@@ -23,9 +23,9 @@ public class Emplacement {
      * @param libelle est une chaîne de caractère
      */
 
-    public Emplacement(Integer id, Integer id_rayon, String libelle) {
+    public Emplacement(Integer id, Integer idrayon, String libelle) {
         this.id = id;
-        this.id_rayon = id_rayon;
+        this.idrayon = idrayon;
         this.libelle = libelle;
     }
 
@@ -63,10 +63,10 @@ public class Emplacement {
     }
 
     public Integer getId_rayon() {
-        return id_rayon;
+        return idrayon;
     }
 
     public void setId_rayon(Integer id_rayon) {
-        this.id_rayon = id_rayon;
+        this.idrayon = id_rayon;
     }
 }

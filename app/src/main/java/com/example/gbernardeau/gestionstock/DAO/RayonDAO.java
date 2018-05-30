@@ -125,7 +125,6 @@ public class RayonDAO extends DAO<Rayon> {
         Cursor res;
         Log.v("Ca passe ici", "test");
         res = db.query(Table_RAYON, null, null, null, null, null, null);
-        Log.v(res.getString(1), "elem1");
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
@@ -134,7 +133,6 @@ public class RayonDAO extends DAO<Rayon> {
             listRayon.add(ma);
             res.moveToNext();
         }
-
         return listRayon;
     }
 
