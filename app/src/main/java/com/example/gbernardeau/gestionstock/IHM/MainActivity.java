@@ -15,24 +15,45 @@ import java.util.List;
 
 import com.example.gbernardeau.gestionstock.DAO.EtatDAO;
 import com.example.gbernardeau.gestionstock.DAO.FamilleDAO;
+import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
 import com.example.gbernardeau.gestionstock.DAO.SQLiteGestionStock;
-import com.example.gbernardeau.gestionstock.METIER.Famille;
-import com.example.gbernardeau.gestionstock.METIER.Famille_Article;
+import com.example.gbernardeau.gestionstock.METIER.Fiches;
 import com.example.gbernardeau.gestionstock.R;
+
+/**
+ * Classe publique MainActivity qui hérite de la classe AppCompatActivity
+ */
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Déclaration des éléments utiles à la classe
+     */
 
     private Button bSearch, bTri, Accueil, CreateFiches, ToutesLesFiches, ToutLesArticles;
     private EditText Search;
     private ListView ListViewAccueil;
 
+    /**
+     * Fonction onCreate qui se déclenche lors de l'ouverture de la page
+     *
+     * @param savedInstanceState
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /**
+         * Appel de la fonction onCreate() du parent
+         */
         super.onCreate(savedInstanceState);
+        /**
+         * Affichage de la vue associée
+         */
         setContentView(R.layout.activity_main);
 
-        // Bouton navigation
+        /**
+         * Fonctions associées à la redirection lors d'un click sur les boutons
+         */
         ToutLesArticles = (Button) findViewById(R.id.ToutLesArticles);
         ToutLesArticles.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,20 +81,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FamilleDAO FamDAO = new FamilleDAO(this);
-        FamDAO.open();
+        /**
+         * Test population ListView
+         */
 
-        ArrayList<Famille> ListAccueil = FamDAO.read();
+        FichesDAO FicDAO = new FichesDAO(this);
+        FicDAO.open();
 
+        ArrayList<Fiches> lesFiches = FicDAO.read();
+        ArrayList<String> Fiches = new ArrayList<String>();
 
+        for(Fiches uneFiche : lesFiches){
+            Fiches.add(uneFiche.getId()+"\n"+uneFiche.getQuantite());
+        }
 
-        // utilisez SimpleCursorAdapter pour afficher les
-        // éléments dans une ListView
-        ArrayAdapter<Famille> adapter = new ArrayAdapter<Famille>(this,
-                android.R.layout.simple_list_item_1, ListAccueil);
-        ListViewAccueil.setAdapter(adapter);
+        ListViewAccueil.setAdapter(new ArrayAdapter<String>(this,R.layout.activity_main,R.id.ListViewAccueil,Fiches));
 
-        FamDAO.close();
+        FicDAO.close();
 
     }
 }
