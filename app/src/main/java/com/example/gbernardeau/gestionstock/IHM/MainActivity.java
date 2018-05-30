@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
             Fiches.add(uneFiche.getId()+"\n"+uneFiche.getQuantite());
         }
 
+        /**
+         *
+         */
+
         ListViewAccueil.setAdapter(new ArrayAdapter<String>(this,R.layout.activity_main,R.id.ListViewAccueil,Fiches));
 
         FicDAO.close();
