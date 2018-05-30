@@ -10,8 +10,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-import com.example.gbernardeau.gestionstock.DAO.RayonDAO;
-import com.example.gbernardeau.gestionstock.METIER.Rayon;
+import com.example.gbernardeau.gestionstock.DAO.FamilleDAO;
+import com.example.gbernardeau.gestionstock.METIER.Famille;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
@@ -29,10 +29,9 @@ public class ListeFichesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_fiches);
 
-        ArrayList<Rayon> listesrayons = new ArrayList<Rayon>();
+        ArrayList<Famille> listesFamilles = new ArrayList<Famille>();
 
         // Bouton navigation
-
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
         Accueilbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,21 +61,21 @@ public class ListeFichesActivity extends AppCompatActivity {
 
 
         //Création d'une instance de ma classe ETATDAO
-        RayonDAO rayons = new RayonDAO(this.getApplicationContext());
+        FamilleDAO familles = new FamilleDAO(this.getApplicationContext());
 
         //On ouvre la base de données pour écrire dedans
-        rayons.open();
+        familles.open();
 
         // on récupere les donnees
-        listesrayons = rayons.read();
+        listesFamilles = familles.read();
 
         //On les affiches
-        for (Rayon unRayon: listesrayons) {
-            Log.v(unRayon.getLibelle().toString(), "rayon");
+        for (Famille uneFamille: listesFamilles) {
+            Log.v(uneFamille.getLibelle().toString(), "Famille");
 
         }
 
-        rayons.close();
+        familles.close();
     }
 
 }
