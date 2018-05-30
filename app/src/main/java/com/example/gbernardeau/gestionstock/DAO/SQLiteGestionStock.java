@@ -20,12 +20,20 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL("CREATE TABLE ETAT(ID integer AUTO_INCREMENT, LIBELLE CHAR(50) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (id)),");
-            db.execSQL("INSERT INTO ETAT (libelle) VALUES ('Fini'),");
-            db.execSQL("INSERT INTO ETAT (libelle) VALUES ('En Attente'),");
+            db.execSQL("INSERT INTO ETAT (libelle) VALUES ('Fini')");
+            db.execSQL("INSERT INTO ETAT (libelle) VALUES ('En Attente')");
 
             db.execSQL("CREATE TABLE RAYON(ID integer AUTO_INCREMENT, LIBELLE CHAR(50) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (id)),");
-            db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC5'),");
+            db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC5')");
             db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC8')");
+
+            db.execSQL("CREATE TABLE FAMILLE(ID integer AUTO_INCREMENT, LIBELLE CHAR(50) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (id)),");
+            db.execSQL("INSERT INTO FAMILLE (LIBELLE) VALUES ('High Tech')");
+            db.execSQL("INSERT INTO FAMILLE (LIBELLE) VALUES ('Informatique')");
+
+            db.execSQL("CREATE TABLE FICHE(ID integer AUTO_INCREMENT, QUANTITE INTEGER NOT NULL, ID_ETAT, CONSTRAINT pk_id PRIMARY KEY (id)), CONSTRAINT fk_idEtat FOREIGN KEY (ID_ETAT) REFERENCES ETAT(id)");
+            db.execSQL("INSERT INTO FICHE (QUANTITE, ID_ETAT) VALUES (30, 1)");
+            db.execSQL("INSERT INTO FICHE (QUANTITE, ID_ETAT) VALUES (20, 1)");
 
 
 
