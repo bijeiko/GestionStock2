@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class SQLiteGestionStock extends SQLiteOpenHelper{
 
-    private static final int DATABASE_VERSION = 16;
+    private static final int DATABASE_VERSION = 22;
     private static final String DATABASE_NAME = "GestionDesStock";
     private Context context = null;
     public SQLiteGestionStock(Context context){
@@ -16,14 +16,13 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
     }
 
 
-
     public void onCreate(SQLiteDatabase db) {
         try {
-            db.execSQL("CREATE TABLE ETAT(ID integer AUTO_INCREMENT, LIBELLE CHAR(50) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (id)),");
+            /*db.execSQL("CREATE TABLE ETAT (ID integer AUTO_INCREMENT, LIBELLE CHAR(50) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (id)),");
             db.execSQL("INSERT INTO ETAT (libelle) VALUES ('Fini'),");
-            db.execSQL("INSERT INTO ETAT (libelle) VALUES ('En Attente'),");
+            db.execSQL("INSERT INTO ETAT (libelle) VALUES ('En Attente'),");*/
 
-            db.execSQL("CREATE TABLE RAYON(ID integer AUTO_INCREMENT, LIBELLE CHAR(50) NOT NULL, CONSTRAINT pk_id  PRIMARY KEY (id)),");
+            db.execSQL("CREATE TABLE RAYON (ID integer AUTO_INCREMENT, LIBELLE CHAR(50) NOT NULL, CONSTRAINT pk_id  PRIMARY KEY (ID)),");
             db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC5'),");
             db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC8')");
 
