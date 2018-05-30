@@ -60,4 +60,11 @@ public class Article {
     public void setStock(Integer stock) {
         this.stock = stock;
     }
+
+    /**
+     * Permet de retourner une chaîne de caractère avec la valeur des attributs de Article.
+     */
+    public String toString(){
+        return "Code : " + code + "; Désignation : " + designation + " & Stock : " + stock;
+    }
 }
