@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Famille> ListAccueil = FamDAO.read();
 
+
+
         // utilisez SimpleCursorAdapter pour afficher les
         // éléments dans une ListView
         ArrayAdapter<Famille> adapter = new ArrayAdapter<Famille>(this,
