@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.gbernardeau.gestionstock.DAO.ArticleDAO;
-import com.example.gbernardeau.gestionstock.METIER.Article;
+import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
+import com.example.gbernardeau.gestionstock.METIER.Fiches;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class ListeFichesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_fiches);
 
-        ArrayList<Article> listesArticle = new ArrayList<Article>();
+        ArrayList<Fiches> listesArticle = new ArrayList<Fiches>();
 
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
@@ -60,7 +60,7 @@ public class ListeFichesActivity extends AppCompatActivity {
 
 
         //Création d'une instance de ma classe ETATDAO
-        ArticleDAO articles = new ArticleDAO(this.getApplicationContext());
+        FichesDAO articles = new FichesDAO(this.getApplicationContext());
 
         //On ouvre la base de données pour écrire dedans
         articles.open();
@@ -69,8 +69,8 @@ public class ListeFichesActivity extends AppCompatActivity {
         listesArticle = articles.read();
 
         //On les affiches
-        for (Article unArticle: listesArticle) {
-            Log.v(unArticle.getDesignation(), "Article");
+        for (Fiches unArticle: listesArticle) {
+            Log.v(unArticle.getQuantite().toString(), "Quantite");
 
         }
 

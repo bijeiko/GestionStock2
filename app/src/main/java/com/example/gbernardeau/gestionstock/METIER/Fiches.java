@@ -14,15 +14,17 @@ package com.example.gbernardeau.gestionstock.METIER;
 public class Fiches {
     private Integer id;
     private Integer quantite;
+    private Integer idetat;
 
     /**
      *
      * @param id est un entier
      * @param quantite est un entier
      */
-    public Fiches(Integer id, Integer quantite) {
+    public Fiches(Integer id, Integer quantite, Integer idetat) {
         this.id = id;
         this.quantite = quantite;
+        this.idetat = idetat;
 
     }
 
@@ -56,5 +58,13 @@ public class Fiches {
      */
     public void setQuantite(Integer quantite) {
         this.quantite = quantite;
+    }
+
+    public Integer getIdetat() {
+        return idetat;
+    }
+
+    public void setIdetat(Integer idetat) {
+        this.idetat = idetat;
     }
 }
