@@ -118,8 +118,8 @@ public class EmplacementDAO extends DAO<Emplacement> {
      */
     public Emplacement read(long id) {
         Cursor res = db.query(Table_EMPLACEMENT, null, null, null, null, null, null);
-        Emplacement unArticle = new Emplacement(res.getInt(0), res.getString(1), res.getString(2));
-        return unArticle;
+        Emplacement unEmplacement = new Emplacement(res.getInt(0), res.getInt(1), res.getString(2));
+        return unEmplacement;
     }
 
     /**
@@ -130,21 +130,24 @@ public class EmplacementDAO extends DAO<Emplacement> {
         ArrayList<Emplacement> listEmplacement = new ArrayList<Emplacement>();
         Integer id;
         String lib;
-        String idrayon;
+        Integer idrayon;
         Emplacement ma;
         Cursor res;
+        Log.v("test", "test");
         res = db.query(Table_EMPLACEMENT, null, null, null, null, null, null);
         Log.v("test", "test");
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
-            idrayon = res.getString(1);
+            idrayon = res.getInt(1);
             lib = res.getString(2);
             ma = new Emplacement(id, idrayon, lib);
             listEmplacement.add(ma);
             res.moveToNext();
         }
-        Log.v("test", "test");
+
+        Log.v("test 2 ", "test");
+
         return listEmplacement;
     }
 

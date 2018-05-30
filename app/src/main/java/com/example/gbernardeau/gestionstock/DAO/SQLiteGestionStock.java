@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class SQLiteGestionStock extends SQLiteOpenHelper{
 
-    private static final int DATABASE_VERSION = 11;
+    private static final int DATABASE_VERSION = 16;
     private static final String DATABASE_NAME = "GestionDesStock";
     private Context context = null;
     public SQLiteGestionStock(Context context){
@@ -20,18 +20,12 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL("CREATE TABLE ETAT(ID integer AUTO_INCREMENT, LIBELLE CHAR(50) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (id)),");
-            db.execSQL("INSERT INTO ETAT (id, libelle) VALUES (1, 'Fini'),");
-            db.execSQL("INSERT INTO ETAT (id, libelle) VALUES (2, 'En Attente'),");
+            db.execSQL("INSERT INTO ETAT (libelle) VALUES ('Fini'),");
+            db.execSQL("INSERT INTO ETAT (libelle) VALUES ('En Attente'),");
 
-            db.execSQL("CREATE TABLE RAYON(ID integer AUTO_INCREMENT, LIBELLE CHAR(50) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (id)),");
-            db.execSQL("INSERT INTO RAYON (id, libelle) VALUES (1, 'RC5'),");
-            db.execSQL("INSERT INTO RAYON (id, libelle) VALUES (2, 'RC8'),");
-
-            db.execSQL("CREATE TABLE EMPLACEMENT (ID INTEGER AUTO_INCREMENT, ID_RAYON CHAR(32) NOT NULL, LIBELLE CHAR(32) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (ID), CONSTRAINT fk_id_rayon FOREIGN KEY (ID_RAYON) REFERENCES RAYON (ID)),");
-            db.execSQL("INSERT INTO EMPLACEMENT (id, id_rayon, libelle) VALUES (1, 1, 'A'),");
-            db.execSQL("INSERT INTO EMPLACEMENT (id, id_rayon, libelle) VALUES (2, 2, 'B'),");
-            db.execSQL("INSERT INTO EMPLACEMENT (id, id_rayon, libelle) VALUES (3, 1, 'C'),");
-            db.execSQL("INSERT INTO EMPLACEMENT (id, id_rayon, libelle) VALUES (4, 2, 'D')");
+            db.execSQL("CREATE TABLE RAYON(ID integer AUTO_INCREMENT, LIBELLE CHAR(50) NOT NULL, CONSTRAINT pk_id  PRIMARY KEY (id)),");
+            db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC5'),");
+            db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC8')");
 
 
         } catch (Exception e) {
