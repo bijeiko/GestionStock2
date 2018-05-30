@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
          * Test population ListView
          */
 
-        FichesDAO FicDAO = new FichesDAO(this);
+       /* FichesDAO FicDAO = new FichesDAO(this);
         FicDAO.open();
 
         ArrayList<Fiches> lesFiches = FicDAO.read();
@@ -93,15 +93,15 @@ public class MainActivity extends AppCompatActivity {
 
         for(Fiches uneFiche : lesFiches){
             Fiches.add(uneFiche.getId()+"\n"+uneFiche.getQuantite());
-        }
+        }*/
 
         /**
          *
          */
 
-        ListViewAccueil.setAdapter(new ArrayAdapter<String>(this,R.layout.activity_main,R.id.ListViewAccueil,Fiches));
+        /*ListViewAccueil.setAdapter(new ArrayAdapter<String>(this,R.layout.activity_main,R.id.ListViewAccueil,Fiches));
 
-        FicDAO.close();
+        FicDAO.close();*/
 
     }
 }

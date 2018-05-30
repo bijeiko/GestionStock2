@@ -11,6 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.gbernardeau.gestionstock.METIER.Article;
 
@@ -22,6 +23,8 @@ public class ArticleDAO extends DAO<Article> {
     private static final String Table_ARTICLE = "ARTICLE";
     private static final String COL_ID_ARTICLE = "ID";
     private static final String COL_DESIGNATION_ARTICLE = "DESIGNATION";
+    private static final String COL_ID_FAMILLE = "IDFAM";
+    private static final String COL_ID_EMPLACEMENT = "IDEMP";
     private static final String COL_STOCK_ARTICLE = "STOCK";
 
     private SQLiteDatabase db; //Dans le cas présent, db sera la base de donnée SQLite.
@@ -35,7 +38,7 @@ public class ArticleDAO extends DAO<Article> {
      * @param context
      */
     public ArticleDAO(Context context) {
-        SQLiteOpenHelper dbGestionStock = new SQLiteGestionStock(context);
+        dbGestionStock = new SQLiteGestionStock(context);
     }
 
     /**
@@ -117,7 +120,7 @@ public class ArticleDAO extends DAO<Article> {
      */
     public Article read(long id) {
         Cursor res = db.query(Table_ARTICLE, null, null, null, null, null, null);
-        Article unArticle = new Article(res.getString(0), res.getString(1), res.getInt(2));
+        Article unArticle = new Article(res.getString(0), res.getString(1), res.getInt(2), res.getInt(3), res.getInt(4));
         return unArticle;
     }
 
@@ -129,17 +132,29 @@ public class ArticleDAO extends DAO<Article> {
         ArrayList<Article> listArticle = new ArrayList<Article>();
         String code;
         String lib;
-        int stock;
+        Integer idfam;
+        Integer idemp;
+        Integer stock;
+
+        Integer id;
+
         Article ma;
         Cursor res;
         res = db.query(Table_ARTICLE, null, null, null, null, null, null);
+
+        id = res.getCount();
+        Log.v(id.toString(), "nb elem");
+
         res.moveToFirst();
         while (!res.isAfterLast()) {
             code = res.getString(0);
             lib = res.getString(1);
             stock = res.getInt(2);
-            ma = new Article(code, lib, stock);
+            idemp = res.getInt(3);
+            idfam = res.getInt(4);
+            ma = new Article(code, lib, stock, idemp, idfam);
             listArticle.add(ma);
+            res.moveToNext();
         }
 
         return listArticle;

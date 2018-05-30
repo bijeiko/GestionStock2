@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.gbernardeau.gestionstock.METIER.Famille;
 
@@ -121,7 +122,12 @@ public class FamilleDAO extends DAO<Famille> {
         Famille ma;
         Cursor res;
         res = db.query(Table_FAMILLE, null, null, null, null, null, null);
+
+        id = res.getCount();
+        Log.v(id.toString(), "nb elem");
+
         res.moveToFirst();
+
         while (!res.isAfterLast()) {
             id = res.getInt(0);
             lib = res.getString(1);
