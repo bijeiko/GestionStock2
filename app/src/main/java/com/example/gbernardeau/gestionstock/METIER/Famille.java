@@ -12,7 +12,7 @@ package com.example.gbernardeau.gestionstock.METIER;
  * Classe possédant 2 attributs : id & libelle.
  */
 public class Famille {
-    private Integer id;
+    private int id;
     private String libelle;
 
     /**
@@ -20,7 +20,7 @@ public class Famille {
      * @param id est un entier
      * @param libelle est une chaîne de caractère
      */
-    public Famille(Integer id, String libelle) {
+    public Famille(int id, String libelle) {
         this.id = id;
         this.libelle = libelle;
     }
@@ -29,7 +29,7 @@ public class Famille {
      * Permet de retourner l'Id.
      * @return id
      */
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -37,7 +37,7 @@ public class Famille {
      * Permet de définir l'Id passé en paramètre.
      * @param id
      */
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
