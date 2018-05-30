@@ -136,14 +136,9 @@ public class ArticleDAO extends DAO<Article> {
         Integer idemp;
         Integer stock;
 
-        Integer id;
-
         Article ma;
         Cursor res;
         res = db.query(Table_ARTICLE, null, null, null, null, null, null);
-
-        id = res.getCount();
-        Log.v(id.toString(), "nb elem");
 
         res.moveToFirst();
         while (!res.isAfterLast()) {
@@ -160,4 +155,31 @@ public class ArticleDAO extends DAO<Article> {
         return listArticle;
     }
 
+    /**
+     * Fonction retournant un ArrayList peuplé de curseur ayant des données qui sont ajoutées à chaque tour de boucle.
+     * @return listArticle
+     */
+    public ArrayList<Article> readDesc() {
+        ArrayList<Article> listArticle = new ArrayList<Article>();
+        String code;
+        String lib;
+        Integer stock;
+        Integer idfam;
+        Integer idemp;
+        Article ma;
+        Cursor res;
+        res = db.query(Table_ARTICLE, null, null, null, "desc", null, null);
+        res.moveToFirst();
+        while (!res.isAfterLast()) {
+            code = res.getString(0);
+            lib = res.getString(1);
+            stock = res.getInt(2);
+            idemp = res.getInt(3);
+            idfam = res.getInt(4);
+            ma = new Article(code, lib, stock, idemp, idfam);
+            listArticle.add(ma);
+        }
+
+        return listArticle;
+    }
 }
