@@ -13,8 +13,6 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.gbernardeau.gestionstock.DAO.EtatDAO;
-import com.example.gbernardeau.gestionstock.DAO.FamilleDAO;
 import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
 import com.example.gbernardeau.gestionstock.DAO.SQLiteGestionStock;
 import com.example.gbernardeau.gestionstock.METIER.Fiches;
@@ -85,23 +83,21 @@ public class MainActivity extends AppCompatActivity {
          * Test population ListView
          */
 
+        ListView ListAccueil = (ListView) findViewById(R.id.ListViewAccueil);
+
         FichesDAO FicDAO = new FichesDAO(this);
         FicDAO.open();
 
         ArrayList<Fiches> lesFiches = FicDAO.read();
         ArrayList<String> Fiches = new ArrayList<String>();
 
+        FicDAO.close();
+
         for(Fiches uneFiche : lesFiches){
-            Fiches.add(uneFiche.getId()+"\n"+uneFiche.getQuantite());
+            Fiches.add(uneFiche.getId()+"\n"+uneFiche.getQuantite()+"\n"+uneFiche.getDate_insertion());
         }
 
-        /**
-         *
-         */
-
-        ListViewAccueil.setAdapter(new ArrayAdapter<String>(this,R.layout.activity_main,R.id.ListViewAccueil,Fiches));
-
-        FicDAO.close();
+        ListAccueil.setAdapter(new ArrayAdapter<String>(this,R.layout.activity_main,R.id.ListViewAccueil,Fiches));
 
     }
 }
