@@ -10,8 +10,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-import com.example.gbernardeau.gestionstock.DAO.RayonDAO;
-import com.example.gbernardeau.gestionstock.METIER.Rayon;
+import com.example.gbernardeau.gestionstock.DAO.EmplacementDAO;
+import com.example.gbernardeau.gestionstock.METIER.Emplacement;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class ListeFichesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_fiches);
 
-        ArrayList<Rayon> listesrayons = new ArrayList<Rayon>();
+        ArrayList<Emplacement> listesemplacements = new ArrayList<Emplacement>();
 
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
@@ -61,21 +61,21 @@ public class ListeFichesActivity extends AppCompatActivity {
 
 
         //Création d'une instance de ma classe ETATDAO
-        RayonDAO rayons = new RayonDAO(this.getApplicationContext());
+        EmplacementDAO emplacements = new EmplacementDAO(this.getApplicationContext());
 
         //On ouvre la base de données pour écrire dedans
-        rayons.open();
+        emplacements.open();
 
         // on récupere les donnees
-        listesrayons = rayons.read();
+        listesemplacements = emplacements.read();
 
         //On les affiches
-        for (Rayon unRayon: listesrayons) {
-            Log.v(unRayon.getLibelle().toString(), "rayon");
+        for (Emplacement unEmplacement: listesemplacements) {
+            Log.v(unEmplacement.getLibelle().toString() + " - " + unEmplacement.getId_rayon().toString() , "emplacements");
 
         }
 
-        rayons.close();
+        emplacements.close();
     }
 
 }
