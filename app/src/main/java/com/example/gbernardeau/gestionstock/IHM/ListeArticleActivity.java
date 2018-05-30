@@ -28,7 +28,7 @@ public class ListeArticleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_article);
-        ArticleDAO ArtDAO = new ArticleDAO(this);
+       /* ArticleDAO ArtDAO = new ArticleDAO(this);
         ArtDAO.open();
 
         ArrayList<Article> ListArticle = ArtDAO.read();
@@ -37,7 +37,7 @@ public class ListeArticleActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, ListArticle);
         listViewArticle.setAdapter(adapter);
 
-        ArtDAO.close();
+        ArtDAO.close();*/
 
 
         // Bouton navigation
