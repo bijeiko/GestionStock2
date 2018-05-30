@@ -29,7 +29,7 @@ public class ListeFichesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_fiches);
 
-        ArrayList<Famille> listesemplacements = new ArrayList<Famille>();
+        ArrayList<Famille> listesFamilles = new ArrayList<Famille>();
 
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
@@ -61,21 +61,21 @@ public class ListeFichesActivity extends AppCompatActivity {
 
 
         //Création d'une instance de ma classe ETATDAO
-        FamilleDAO emplacements = new FamilleDAO(this.getApplicationContext());
+        FamilleDAO familles = new FamilleDAO(this.getApplicationContext());
 
         //On ouvre la base de données pour écrire dedans
-        emplacements.open();
+        familles.open();
 
         // on récupere les donnees
-        listesemplacements = emplacements.read();
+        listesFamilles = familles.read();
 
         //On les affiches
-        for (Famille unEmplacement: listesemplacements) {
-            Log.v(unEmplacement.getLibelle().toString(), "Famille");
+        for (Famille uneFamille: listesFamilles) {
+            Log.v(uneFamille.getLibelle().toString(), "Famille");
 
         }
 
-        emplacements.close();
+        familles.close();
     }
 
 }

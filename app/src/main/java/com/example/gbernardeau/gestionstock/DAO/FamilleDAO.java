@@ -33,7 +33,7 @@ public class FamilleDAO extends DAO<Famille> {
      * @param context
      */
     public FamilleDAO(Context context) {
-        SQLiteOpenHelper dbGestionStock = new SQLiteGestionStock(context);
+        dbGestionStock = new SQLiteGestionStock(context);
     }
     /**
      * Permet d'ouvrir la base de données.
