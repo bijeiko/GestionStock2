@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FamilleDAO FamDAO = new FamilleDAO(this);
+       /*  FamilleDAO FamDAO = new FamilleDAO(this);
         FamDAO.open();
 
         ArrayList<Famille> ListAccueil = FamDAO.read();
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, ListAccueil);
         ListViewAccueil.setAdapter(adapter);
 
-        FamDAO.close();
+        FamDAO.close(); */
 
     }
 }

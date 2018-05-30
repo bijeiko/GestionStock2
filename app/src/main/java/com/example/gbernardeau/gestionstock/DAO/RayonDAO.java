@@ -133,6 +133,7 @@ public class RayonDAO extends DAO<Rayon> {
             listRayon.add(ma);
             res.moveToNext();
         }
+
         return listRayon;
     }
 

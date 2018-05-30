@@ -24,7 +24,7 @@ public class EmplacementDAO extends DAO<Emplacement> {
 
     private static final String Table_EMPLACEMENT = "EMPLACEMENT";
     private static final String COL_ID_EMPLACEMENT = "ID";
-    private static final String COL_ID_RAYON = "ID_RAYON";
+    private static final String COL_ID_RAYON = "IDRAYON";
     private static final String COL_LIBELLE_EMPLACEMENT = "LIBELLE";
 
     private SQLiteDatabase db; //Dans le cas présent, db sera la base de donnée SQLite.
@@ -135,7 +135,6 @@ public class EmplacementDAO extends DAO<Emplacement> {
         Cursor res;
         Log.v("test", "test");
         res = db.query(Table_EMPLACEMENT, null, null, null, null, null, null);
-        Log.v("test", "test");
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
@@ -146,7 +145,6 @@ public class EmplacementDAO extends DAO<Emplacement> {
             res.moveToNext();
         }
 
-        Log.v("test 2 ", "test");
 
         return listEmplacement;
     }

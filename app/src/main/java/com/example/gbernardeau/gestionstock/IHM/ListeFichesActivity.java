@@ -32,7 +32,6 @@ public class ListeFichesActivity extends AppCompatActivity {
         ArrayList<Rayon> listesrayons = new ArrayList<Rayon>();
 
         // Bouton navigation
-
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
         Accueilbtn.setOnClickListener(new View.OnClickListener() {
             @Override
