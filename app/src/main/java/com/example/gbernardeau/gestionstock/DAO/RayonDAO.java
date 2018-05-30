@@ -116,13 +116,16 @@ public class RayonDAO extends DAO<Rayon> {
      * Fonction retournant un ArrayList peuplé de curseur ayant des données qui sont ajoutées à chaque tour de boucle.
      * @return listRayon
      */
+
     public ArrayList<Rayon> read() {
         ArrayList<Rayon> listRayon = new ArrayList<Rayon>();
         Integer id;
         String libelle;
         Rayon ma;
         Cursor res;
+        Log.v("Ca passe ici", "test");
         res = db.query(Table_RAYON, null, null, null, null, null, null);
+        Log.v(res.getString(1), "elem1");
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
