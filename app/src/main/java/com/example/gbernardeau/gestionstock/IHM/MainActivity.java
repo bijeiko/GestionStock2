@@ -1,14 +1,23 @@
 package com.example.gbernardeau.gestionstock.IHM;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.gbernardeau.gestionstock.DAO.EtatDAO;
+import com.example.gbernardeau.gestionstock.DAO.FamilleDAO;
+import com.example.gbernardeau.gestionstock.DAO.SQLiteGestionStock;
+import com.example.gbernardeau.gestionstock.METIER.Famille;
+import com.example.gbernardeau.gestionstock.METIER.Famille_Article;
 import com.example.gbernardeau.gestionstock.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button bSearch, bTri, Accueil, CreateFiches, ToutesLesFiches, ToutLesArticles;
     private EditText Search;
+    private ListView ListViewAccueil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +60,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        FamilleDAO FamDAO = new FamilleDAO(this);
+        FamDAO.open();
 
+        ArrayList<Famille> ListAccueil = FamDAO.read();
+
+
+
+        // utilisez SimpleCursorAdapter pour afficher les
+        // éléments dans une ListView
+        ArrayAdapter<Famille> adapter = new ArrayAdapter<Famille>(this,
+                android.R.layout.simple_list_item_1, ListAccueil);
+        ListViewAccueil.setAdapter(adapter);
+
+        FamDAO.close();
 
     }
 }
