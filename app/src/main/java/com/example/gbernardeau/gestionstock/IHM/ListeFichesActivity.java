@@ -30,6 +30,7 @@ public class ListeFichesActivity extends AppCompatActivity {
         setContentView(R.layout.liste_fiches);
 
         ArrayList<Rayon> listesrayons = new ArrayList<Rayon>();
+
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
         Accueilbtn.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +65,11 @@ public class ListeFichesActivity extends AppCompatActivity {
 
         //On ouvre la base de données pour écrire dedans
         rayons.open();
+
+        // on récupere les donnees
         listesrayons = rayons.read();
 
+        //On les affiches
         for (Rayon unRayon: listesrayons) {
             Log.v(unRayon.getLibelle().toString(), "rayon");
 
