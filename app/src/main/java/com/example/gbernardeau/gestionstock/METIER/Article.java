@@ -12,16 +12,20 @@ public class Article {
     private String code;
     private String designation;
     private Integer stock;
+    private Integer idfam;
+    private Integer idemp;
 
     /**
      * @param code est une chaîne de caractère
      * @param designation est une chaîne de caractère
      * @param stock est un entier
      */
-    public Article(String code, String designation, Integer stock) {
+    public Article(String code, String designation, Integer stock,Integer idemp, Integer idfam) {
         this.code = code;
         this.designation = designation;
         this.stock = stock;
+        this.idemp = idemp;
+        this.idfam = idfam;
     }
 
     /**
@@ -66,5 +70,21 @@ public class Article {
      */
     public String toString(){
         return "Code : " + code + "; Désignation : " + designation + " & Stock : " + stock;
+    }
+
+    public Integer getIdfam() {
+        return idfam;
+    }
+
+    public void setIdfam(Integer idfam) {
+        this.idfam = idfam;
+    }
+
+    public Integer getIdemp() {
+        return idemp;
+    }
+
+    public void setIdemp(Integer idemp) {
+        this.idemp = idemp;
     }
 }
