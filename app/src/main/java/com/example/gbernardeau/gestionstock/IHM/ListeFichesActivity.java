@@ -10,8 +10,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-import com.example.gbernardeau.gestionstock.DAO.EmplacementDAO;
-import com.example.gbernardeau.gestionstock.METIER.Emplacement;
+import com.example.gbernardeau.gestionstock.DAO.FamilleDAO;
+import com.example.gbernardeau.gestionstock.METIER.Famille;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class ListeFichesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_fiches);
 
-        ArrayList<Emplacement> listesemplacements = new ArrayList<Emplacement>();
+        ArrayList<Famille> listesemplacements = new ArrayList<Famille>();
 
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
@@ -61,7 +61,7 @@ public class ListeFichesActivity extends AppCompatActivity {
 
 
         //Création d'une instance de ma classe ETATDAO
-        EmplacementDAO emplacements = new EmplacementDAO(this.getApplicationContext());
+        FamilleDAO emplacements = new FamilleDAO(this.getApplicationContext());
 
         //On ouvre la base de données pour écrire dedans
         emplacements.open();
@@ -70,8 +70,8 @@ public class ListeFichesActivity extends AppCompatActivity {
         listesemplacements = emplacements.read();
 
         //On les affiches
-        for (Emplacement unEmplacement: listesemplacements) {
-            Log.v(unEmplacement.getLibelle().toString() + " - " + unEmplacement.getId_rayon().toString() , "emplacements");
+        for (Famille unEmplacement: listesemplacements) {
+            Log.v(unEmplacement.getLibelle().toString(), "Famille");
 
         }
 

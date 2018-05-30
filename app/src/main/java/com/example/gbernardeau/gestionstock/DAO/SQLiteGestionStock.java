@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class SQLiteGestionStock extends SQLiteOpenHelper{
-    private static final int DATABASE_VERSION = 35;
+    private static final int DATABASE_VERSION = 38;
     private static final String DATABASE_NAME = "GestionDesStock";
     private Context context = null;
     public SQLiteGestionStock(Context context){
@@ -28,12 +28,15 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
             db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC5')");
             db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC8')");
 
-
-            db.execSQL("CREATE TABLE EMPLACEMENT (ID integer AUTO_INCREMENT, IDRAYON integer NOT NULL, LIBELLE CHAR(32) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (id))");
+            db.execSQL("CREATE TABLE EMPLACEMENT (ID integer AUTO_INCREMENT, IDRAYON integer NOT NULL, LIBELLE CHAR(32) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (id)), CONSTRAINT fk_idrayon FOREIGN KEY (idrayon) REFERENCES RAYON (id)");
             db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (1, 'A')");
             db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (2, 'B')");
             db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (1, 'C')");
             db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (2, 'D')");
+
+            db.execSQL("CREATE TABLE FAMILLE ( ID integer AUTO_INCREMENT, LIBELLE CHAR(32) NOT NULL, CONSTRAINT pk_id PRIMARY KEY (id))");
+            db.execSQL("INSERT INTO FAMILLE (libelle) VALUES ('Legume')");
+            db.execSQL("INSERT INTO FAMILLE (libelle) VALUES ('Fruits')");
 
 
         } catch (Exception e) {

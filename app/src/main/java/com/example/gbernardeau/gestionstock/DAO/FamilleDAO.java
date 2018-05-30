@@ -116,7 +116,7 @@ public class FamilleDAO extends DAO<Famille> {
      */
     public ArrayList<Famille> read() {
         ArrayList<Famille> listFamille = new ArrayList<Famille>();
-        int id;
+        Integer id;
         String lib;
         Famille ma;
         Cursor res;
@@ -127,6 +127,7 @@ public class FamilleDAO extends DAO<Famille> {
             lib = res.getString(1);
             ma = new Famille(id, lib);
             listFamille.add(ma);
+            res.moveToNext();
         }
 
         return listFamille;
