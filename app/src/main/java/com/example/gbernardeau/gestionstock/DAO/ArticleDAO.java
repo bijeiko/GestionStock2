@@ -11,6 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.gbernardeau.gestionstock.METIER.Article;
 
@@ -134,9 +135,16 @@ public class ArticleDAO extends DAO<Article> {
         Integer idfam;
         Integer idemp;
         Integer stock;
+
+        Integer id;
+
         Article ma;
         Cursor res;
         res = db.query(Table_ARTICLE, null, null, null, null, null, null);
+
+        id = res.getCount();
+        Log.v(id.toString(), "nb elem");
+
         res.moveToFirst();
         while (!res.isAfterLast()) {
             code = res.getString(0);
