@@ -21,7 +21,7 @@ public class FamilleDAO extends DAO<Famille> {
      */
     private SQLiteGestionStock dbGestionStock;
 
-    private static final String Table_FAMILLE = "ETAT";
+    private static final String Table_FAMILLE = "FAMILLE";
     private static final String COL_ID_FAMILLE = "ID";
     private static final String COL_LIBELLE_FAMILLE = "LIBELLE";
     /**
