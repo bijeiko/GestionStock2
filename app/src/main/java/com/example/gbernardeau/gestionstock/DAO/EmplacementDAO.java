@@ -11,6 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.gbernardeau.gestionstock.METIER.Emplacement;
 
@@ -21,8 +22,9 @@ public class EmplacementDAO extends DAO<Emplacement> {
 
     private SQLiteGestionStock dbGestionStock;
 
-    private static final String Table_EMPLACEMENT = "Emplacement";
+    private static final String Table_EMPLACEMENT = "EMPLACEMENT";
     private static final String COL_ID_EMPLACEMENT = "ID";
+    private static final String COL_ID_RAYON = "ID_RAYON";
     private static final String COL_LIBELLE_EMPLACEMENT = "LIBELLE";
 
     private SQLiteDatabase db; //Dans le cas présent, db sera la base de donnée SQLite.
@@ -36,7 +38,7 @@ public class EmplacementDAO extends DAO<Emplacement> {
      * @param context
      */
     public EmplacementDAO(Context context) {
-        SQLiteOpenHelper dbGestionStock = new SQLiteGestionStock(context);
+        dbGestionStock = new SQLiteGestionStock(context);
     }
 
     /**
@@ -116,7 +118,7 @@ public class EmplacementDAO extends DAO<Emplacement> {
      */
     public Emplacement read(long id) {
         Cursor res = db.query(Table_EMPLACEMENT, null, null, null, null, null, null);
-        Emplacement unArticle = new Emplacement(res.getInt(0), res.getString(1));
+        Emplacement unArticle = new Emplacement(res.getInt(0), res.getString(1), res.getString(2));
         return unArticle;
     }
 
@@ -126,19 +128,23 @@ public class EmplacementDAO extends DAO<Emplacement> {
      */
     public ArrayList<Emplacement> read() {
         ArrayList<Emplacement> listEmplacement = new ArrayList<Emplacement>();
-        int id;
+        Integer id;
         String lib;
+        String idrayon;
         Emplacement ma;
         Cursor res;
         res = db.query(Table_EMPLACEMENT, null, null, null, null, null, null);
+        Log.v("test", "test");
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
-            lib = res.getString(1);
-            ma = new Emplacement(id, lib);
+            idrayon = res.getString(1);
+            lib = res.getString(2);
+            ma = new Emplacement(id, idrayon, lib);
             listEmplacement.add(ma);
+            res.moveToNext();
         }
-
+        Log.v("test", "test");
         return listEmplacement;
     }
 
