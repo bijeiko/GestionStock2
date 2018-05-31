@@ -7,7 +7,7 @@ import android.util.Log;
 
 
 public class SQLiteGestionStock extends SQLiteOpenHelper{
-    private static final int DATABASE_VERSION = 107;
+    private static final int DATABASE_VERSION = 111;
     private static final String DATABASE_NAME = "GestionDesStock";
     private Context context = null;
     public SQLiteGestionStock(Context context){
@@ -28,7 +28,7 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
             db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC5')");
             db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC8')");
 
-            db.execSQL("CREATE TABLE EMPLACEMENT (ID SERIAL PRIMARY KEY, IDRAYON integer NOT NULL, LIBELLE CHAR(32) NOT NULL, CONSTRAINT fk_idrayon FOREIGN KEY (idrayon) REFERENCES RAYON (id))");
+            db.execSQL("CREATE TABLE EMPLACEMENT (ID integer PRIMARY KEY autoincrement, IDRAYON integer NOT NULL, LIBELLE CHAR(32) NOT NULL, CONSTRAINT fk_idrayon FOREIGN KEY (idrayon) REFERENCES RAYON (id))");
             db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (1, 'A')");
             db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (2, 'B')");
             db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (1, 'C')");

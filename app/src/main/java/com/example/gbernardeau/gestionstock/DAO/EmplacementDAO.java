@@ -134,6 +134,7 @@ public class EmplacementDAO extends DAO<Emplacement> {
         Emplacement ma;
         Cursor res;
         res = db.query(Table_EMPLACEMENT, null, null, null, null, null, null);
+        Log.v(res.toString(), "test");
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
