@@ -23,9 +23,10 @@ public class FichesDAO extends DAO<Fiches> {
 
     private static final String Table_FICHES = "FICHE";
     private static final String COL_ID = "ID";
-    private static final String COL_ID_AVOIR = "IDETAT";
+    private static final String COL_ID_AVOIR = "ID_AVOIR";
     private static final String COL_QUANTITE = "QUANTITE";
 
+    private static final String COL_DATE_INSERTION = "DATE_INSERTION";
 
 
     /**
@@ -112,7 +113,7 @@ public class FichesDAO extends DAO<Fiches> {
      */
     public Fiches read(long id) {
         Cursor res = db.query(Table_FICHES, null, null, null, null, null, null);
-        Fiches uneFiche = new Fiches(res.getInt(0), res.getInt(1), res.getInt(2));
+        Fiches uneFiche = new Fiches(res.getInt(0), res.getInt(1), null);
         return uneFiche;
     }
     /**
@@ -121,20 +122,17 @@ public class FichesDAO extends DAO<Fiches> {
      */
     public ArrayList<Fiches> read() {
         ArrayList<Fiches> listFiches = new ArrayList<Fiches>();
-        Integer id;
-        Integer qte;
-        Integer idetat;
+        int id;
+        int qte;
         Fiches ma;
         Cursor res;
-        res = db.query(Table_FICHES, null, null, null, null, null, null);
+        res = db.query(Table_FICHES, null, null, null, null, null, null, "10");
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
             qte = res.getInt(1);
-            idetat = res.getInt(2);
-            ma = new Fiches(id, qte, idetat);
+            ma = new Fiches(id, qte, null);
             listFiches.add(ma);
-            res.moveToNext();
         }
 
         return listFiches;

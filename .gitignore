@@ -7,3 +7,5 @@
 /build
 /captures
 .externalNativeBuild
+.idea/misc.xml
+app/src/main/java/com/example/gbernardeau/gestionstock/DAO/SQLiteGestionStock.java

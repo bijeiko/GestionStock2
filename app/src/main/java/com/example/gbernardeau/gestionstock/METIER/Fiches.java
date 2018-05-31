@@ -8,23 +8,26 @@ package com.example.gbernardeau.gestionstock.METIER;
 
  */
 
+import java.util.Date;
+
 /**
- * Classe possédant 2 attributs : id & quantite.
+ * Classe possédant 3 attributs : id & quantite & date_insertion.
  */
 public class Fiches {
     private Integer id;
     private Integer quantite;
-    private Integer idetat;
+    private Date date_insertion;
 
     /**
      *
      * @param id est un entier
      * @param quantite est un entier
      */
-    public Fiches(Integer id, Integer quantite, Integer idetat) {
+    public Fiches(Integer id, Integer quantite, Date date_insertion) {
         this.id = id;
         this.quantite = quantite;
-        this.idetat = idetat;
+        this.date_insertion = date_insertion;
+
 
     }
 
@@ -60,11 +63,19 @@ public class Fiches {
         this.quantite = quantite;
     }
 
-    public Integer getIdetat() {
-        return idetat;
+    /**
+     * Permet de retourner la valeur de l'attribut date_insertion
+     * @return
+     */
+    public Date getDate_insertion() {
+        return date_insertion;
     }
 
-    public void setIdetat(Integer idetat) {
-        this.idetat = idetat;
+    /**
+     * Permet de définire la valeur de l'attribut date_insertion
+     * @param date_insertion
+     */
+    public void setDate_insertion(Date date_insertion) {
+        this.date_insertion = date_insertion;
     }
 }
