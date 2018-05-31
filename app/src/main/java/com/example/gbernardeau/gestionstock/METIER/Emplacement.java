@@ -8,6 +8,8 @@ package com.example.gbernardeau.gestionstock.METIER;
 
 */
 
+import android.util.Log;
+
 /**
  * Classe possédant deux attributs : id & libelle.
  */
@@ -27,6 +29,7 @@ public class Emplacement {
         this.id = id;
         this.idrayon = idrayon;
         this.libelle = libelle;
+
     }
 
     /**

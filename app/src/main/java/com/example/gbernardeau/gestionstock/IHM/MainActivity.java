@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
          * Test population ListView
          */
 
-        ListView ListAccueil = (ListView) findViewById(R.id.ListViewAccueil);
+       /* ListView ListAccueil = (ListView) findViewById(R.id.ListViewAccueil);
 
         FichesDAO FicDAO = new FichesDAO(this);
         FicDAO.open();
@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ListAccueil.setAdapter(new ArrayAdapter<String>(this,R.layout.activity_main,R.id.ListViewAccueil,Fiches));
+        */
 
     }
 }

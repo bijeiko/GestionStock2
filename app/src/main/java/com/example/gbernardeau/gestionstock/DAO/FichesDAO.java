@@ -133,6 +133,7 @@ public class FichesDAO extends DAO<Fiches> {
             qte = res.getInt(1);
             ma = new Fiches(id, qte, null);
             listFiches.add(ma);
+            res.moveToNext();
         }
 
         return listFiches;

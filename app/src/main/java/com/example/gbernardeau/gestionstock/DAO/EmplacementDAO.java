@@ -133,13 +133,13 @@ public class EmplacementDAO extends DAO<Emplacement> {
         Integer idrayon;
         Emplacement ma;
         Cursor res;
-        Log.v("test", "test");
         res = db.query(Table_EMPLACEMENT, null, null, null, null, null, null);
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
             idrayon = res.getInt(1);
             lib = res.getString(2);
+            Log.v(id.toString(), "id");
             ma = new Emplacement(id, idrayon, lib);
             listEmplacement.add(ma);
             res.moveToNext();
