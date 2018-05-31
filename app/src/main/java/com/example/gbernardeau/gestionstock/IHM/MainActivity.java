@@ -1,21 +1,13 @@
 package com.example.gbernardeau.gestionstock.IHM;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
-import com.example.gbernardeau.gestionstock.DAO.SQLiteGestionStock;
-import com.example.gbernardeau.gestionstock.METIER.Fiches;
 import com.example.gbernardeau.gestionstock.R;
 
 /**
@@ -74,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         ToutesLesFiches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent activityfiche = new Intent(getApplicationContext(), ListeFichesActivity.class);
+                Intent activityfiche = new Intent(getApplicationContext(), FichesActivity.class);
                 startActivity(activityfiche);
             }
         });

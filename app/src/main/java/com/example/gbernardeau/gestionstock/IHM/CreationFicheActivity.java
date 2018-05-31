@@ -11,7 +11,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.gbernardeau.gestionstock.DAO.EmplacementDAO;
+import com.example.gbernardeau.gestionstock.DAO.RayonDAO;
 import com.example.gbernardeau.gestionstock.METIER.Emplacement;
+import com.example.gbernardeau.gestionstock.METIER.Rayon;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
@@ -108,5 +110,6 @@ public class CreationFicheActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
     }
 }

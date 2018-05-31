@@ -7,7 +7,7 @@ import android.util.Log;
 
 
 public class SQLiteGestionStock extends SQLiteOpenHelper{
-    private static final int DATABASE_VERSION = 111;
+    private static final int DATABASE_VERSION = 118;
     private static final String DATABASE_NAME = "GestionDesStock";
     private Context context = null;
     public SQLiteGestionStock(Context context){
@@ -19,20 +19,26 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
 
     public void onCreate(SQLiteDatabase db) {
         try {
+            db.execSQL("DROP TABLE ETAT");
+            db.execSQL("DROP TABLE RAYON");
+            db.execSQL("DROP TABLE EMPLACEMENT");
+            db.execSQL("DROP TABLE FAMILLE");
+            db.execSQL("DROP TABLE ARTICLE");
+            db.execSQL("DROP TABLE FICHE");
 
-            db.execSQL("CREATE TABLE ETAT (ID SERIAL PRIMARY KEY, LIBELLE CHAR(50) NOT NULL)");
+            db.execSQL("CREATE TABLE ETAT (ID integer PRIMARY KEY autoincrement, LIBELLE CHAR(50) NOT NULL)");
             db.execSQL("INSERT INTO ETAT (libelle) VALUES ('Fini')");
             db.execSQL("INSERT INTO ETAT (libelle) VALUES ('En Attente')");
 
-            db.execSQL("CREATE TABLE RAYON (ID SERIAL PRIMARY KEY, LIBELLE CHAR(50) NOT NULL)");
+            db.execSQL("CREATE TABLE RAYON (ID integer PRIMARY KEY autoincrement, LIBELLE CHAR(50) NOT NULL)");
             db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC5')");
             db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC8')");
 
             db.execSQL("CREATE TABLE EMPLACEMENT (ID integer PRIMARY KEY autoincrement, IDRAYON integer NOT NULL, LIBELLE CHAR(32) NOT NULL, CONSTRAINT fk_idrayon FOREIGN KEY (idrayon) REFERENCES RAYON (id))");
-            db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (1, 'A')");
-            db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (2, 'B')");
-            db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (1, 'C')");
-            db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (2, 'D')");
+            db.execSQL("INSERT INTO EMPLACEMENT (ID, idrayon, libelle) VALUES (1, 1, 'A')");
+            db.execSQL("INSERT INTO EMPLACEMENT (ID, idrayon, libelle) VALUES (2, 2, 'B')");
+            db.execSQL("INSERT INTO EMPLACEMENT (ID, idrayon, libelle) VALUES (3, 1, 'C')");
+            db.execSQL("INSERT INTO EMPLACEMENT (ID, idrayon, libelle) VALUES (4, 2, 'D')");
 
             db.execSQL("CREATE TABLE FAMILLE (ID SERIAL PRIMARY KEY, LIBELLE CHAR(150) NOT NULL)");
             db.execSQL("INSERT INTO FAMILLE (libelle) VALUES ('Legume')");

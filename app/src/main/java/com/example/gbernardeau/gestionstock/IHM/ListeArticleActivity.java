@@ -3,8 +3,6 @@ package com.example.gbernardeau.gestionstock.IHM;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.ContextMenu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,15 +12,10 @@ import android.widget.TextView;
 import com.example.gbernardeau.gestionstock.DAO.ArticleDAO;
 import com.example.gbernardeau.gestionstock.DAO.EmplacementDAO;
 import com.example.gbernardeau.gestionstock.DAO.RayonDAO;
-import com.example.gbernardeau.gestionstock.METIER.Article;
 import com.example.gbernardeau.gestionstock.METIER.Emplacement;
-import com.example.gbernardeau.gestionstock.METIER.Rayon;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Created by gbernardeau on 03/04/2018.
@@ -88,7 +81,7 @@ public class ListeArticleActivity extends AppCompatActivity {
         ToutesLesFiches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent activityfiches = new Intent(getApplicationContext(), ListeFichesActivity.class);
+                Intent activityfiches = new Intent(getApplicationContext(), FichesActivity.class);
                 startActivity(activityfiches);
             }
         });

@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * Created by gbernardeau on 03/04/2018.
  */
 
-public class ListeFichesActivity extends AppCompatActivity {
+public class FichesActivity extends AppCompatActivity {
     private Button Accueilbtn, CreateFiche, ToutLesArticles;
     private ListView Listfiches;
 

@@ -129,6 +129,7 @@ public class RayonDAO extends DAO<Rayon> {
         while (!res.isAfterLast()) {
             id = res.getInt(0);
             libelle = res.getString(1);
+            Log.v(id + " - " + libelle, "elem");
             ma = new Rayon(id, libelle);
             listRayon.add(ma);
             res.moveToNext();
