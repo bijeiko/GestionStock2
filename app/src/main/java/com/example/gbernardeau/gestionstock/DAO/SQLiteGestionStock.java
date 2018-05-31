@@ -7,7 +7,7 @@ import android.util.Log;
 
 
 public class SQLiteGestionStock extends SQLiteOpenHelper{
-    private static final int DATABASE_VERSION = 119;
+    private static final int DATABASE_VERSION = 121;
     private static final String DATABASE_NAME = "GestionDesStock";
     private Context context = null;
     public SQLiteGestionStock(Context context){
@@ -40,7 +40,7 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
             db.execSQL("INSERT INTO EMPLACEMENT (ID, idrayon, libelle) VALUES (3, 1, 'C')");
             db.execSQL("INSERT INTO EMPLACEMENT (ID, idrayon, libelle) VALUES (4, 2, 'D')");
 
-            db.execSQL("CREATE TABLE FAMILLE (ID SERIAL PRIMARY KEY, LIBELLE CHAR(150) NOT NULL)");
+            db.execSQL("CREATE TABLE FAMILLE (ID integer PRIMARY KEY autoincrement, LIBELLE CHAR(150) NOT NULL)");
             db.execSQL("INSERT INTO FAMILLE (libelle) VALUES ('Legume')");
             db.execSQL("INSERT INTO FAMILLE (libelle) VALUES ('Fruits')");
 
@@ -48,7 +48,7 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
             db.execSQL("INSERT INTO ARTICLE (code, libelle, idemp, idfam) VALUES ('a45', 'pomme', 2, 2)");
             db.execSQL("INSERT INTO ARTICLE (code, libelle, idemp, idfam) VALUES ('a286', 'patate', 1, 1)");
 
-            db.execSQL("CREATE TABLE FICHE (ID SERIAL PRIMARY KEY, QUANTITE integer NOT NULL, IDETAT integer NOT NULL, IDARTICLE integer NOT NULL, CONSTRAINT fk_idetat FOREIGN KEY (idetat) REFERENCES ETAT (ID))");
+            db.execSQL("CREATE TABLE FICHE (ID integer PRIMARY KEY autoincrement, QUANTITE integer NOT NULL, IDETAT integer NOT NULL, IDARTICLE integer NOT NULL, IDEMP integer NOT NULL, CONSTRAINT fk_idetat FOREIGN KEY (idetat) REFERENCES ETAT (ID))");
             db.execSQL("INSERT INTO FICHE (quantite, idetat, idarticle, idemp) VALUES (5, 1, 1, 1)");
             db.execSQL("INSERT INTO FICHE (quantite, idetat, idarticle, idemp) VALUES (2, 2, 2, 1)");
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.gbernardeau.gestionstock.METIER.Fiches;
 
@@ -23,8 +24,10 @@ public class FichesDAO extends DAO<Fiches> {
 
     private static final String Table_FICHES = "FICHE";
     private static final String COL_ID = "ID";
-    private static final String COL_ID_AVOIR = "ID_AVOIR";
     private static final String COL_QUANTITE = "QUANTITE";
+    private static final String COL_IDETAT = "IDETAT";
+    private static final String COL_IDARTICLE = "IDARTICLE";
+    private static final String COL_IDEMP = "IDEMP";
 
     private static final String COL_DATE_INSERTION = "DATE_INSERTION";
 
@@ -130,7 +133,7 @@ public class FichesDAO extends DAO<Fiches> {
 
         Fiches ma;
         Cursor res;
-        res = db.query(Table_FICHES, null, null, null, null, null, null, "10");
+        res = db.query(Table_FICHES, null, null, null, null, null, null);
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
@@ -140,6 +143,7 @@ public class FichesDAO extends DAO<Fiches> {
             idemp = res.getInt(4);
             ma = new Fiches(id, qte, idetat, idarticle, idemp);
             listFiches.add(ma);
+
             res.moveToNext();
         }
 

@@ -28,7 +28,7 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         this.layoutResourceId = layoutResourceId;
         this.context = context;
         this.listfiches = data;
-        Log.v("test", "test");
+
     }
 
     @Override
@@ -40,13 +40,11 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId, parent, false);
-
             holder = new MatiereHolder();
             holder.id = (TextView)row.findViewById(R.id.fiches_id);
             holder.famille = (TextView)row.findViewById(R.id.fiches_famille);
             holder.emplacement = (TextView)row.findViewById(R.id.fiches_emplacement);
             holder.etat = (TextView)row.findViewById(R.id.fiches_etat);
-
             row.setTag(holder);
         }
         else
@@ -55,11 +53,10 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         }
 
         Fiches fiches = listfiches.get(position);
-        holder.id.setText(fiches.getId());
-        holder.famille.setText(Float.toString(fiches.getIdarticle()));
-        holder.emplacement.setText(Float.toString(fiches.getIdemp()));
-        holder.etat.setText(Float.toString(fiches.getIdetat()));
-
+        holder.id.setText(fiches.getId().toString());
+        holder.famille.setText(fiches.getIdarticle().toString());
+        holder.emplacement.setText(fiches.getIdemp().toString());
+        holder.etat.setText(fiches.getIdetat().toString());
 
         return row;
     }

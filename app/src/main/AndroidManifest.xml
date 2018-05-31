@@ -26,6 +26,8 @@
                 android:value=".IHM.MainActivity" />
         </activity>
 
+        <activity android:name=".IHM.FichesAdapter"></activity>
+
         <activity android:name=".IHM.ListeArticleActivity"
             android:parentActivityName=".IHM.MainActivity">
             <meta-data
