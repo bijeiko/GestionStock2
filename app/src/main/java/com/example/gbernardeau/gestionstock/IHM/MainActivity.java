@@ -13,8 +13,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.gbernardeau.gestionstock.DAO.ArticleDAO;
+import com.example.gbernardeau.gestionstock.DAO.EtatDAO;
+import com.example.gbernardeau.gestionstock.DAO.FamilleDAO;
 import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
 import com.example.gbernardeau.gestionstock.DAO.SQLiteGestionStock;
+import com.example.gbernardeau.gestionstock.METIER.Article;
 import com.example.gbernardeau.gestionstock.METIER.Fiches;
 import com.example.gbernardeau.gestionstock.R;
 
@@ -23,7 +27,7 @@ import com.example.gbernardeau.gestionstock.R;
  */
 
 public class MainActivity extends AppCompatActivity {
-
+    private ListView mListView;
     /**
      * Déclaration des éléments utiles à la classe
      */
@@ -79,26 +83,50 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ArticleDAO ArtDao = new ArticleDAO(this);
+
+
+        setContentView(R.layout.liste_article);
+        mListView = (ListView) findViewById(R.id.listViewArticle);
+
+        //Co à la bdd
+        ArtDao.open();
+        //récupération des données
+        ArrayList<Article> ListArticle = ArtDao.read();
+        //Passage dans un ArrayList mais en STRING, pour être géré plus simplement.
+        ArrayList<String> Articles = new ArrayList<String>();
+        //Ajout data dans la liste.
+        for (Article unArticle : ListArticle) {
+            Articles.add(unArticle.getCode() + unArticle.getDesignation()+ unArticle.getIdfam()+
+                    unArticle.getIdemp() + unArticle.getStock());
+        }
+        //déco de la bdd
+        ArtDao.close();
+        //L'adapter sert à afficher la liste dans la listeView.
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Articles);
+        mListView.setAdapter(adapter);
+
         /**
          * Test population ListView
          */
 
-       /* ListView ListAccueil = (ListView) findViewById(R.id.ListViewAccueil);
-
-        FichesDAO FicDAO = new FichesDAO(this);
+       /* FichesDAO FicDAO = new FichesDAO(this);
         FicDAO.open();
 
         ArrayList<Fiches> lesFiches = FicDAO.read();
         ArrayList<String> Fiches = new ArrayList<String>();
 
-        FicDAO.close();
-
         for(Fiches uneFiche : lesFiches){
-            Fiches.add(uneFiche.getId()+"\n"+uneFiche.getQuantite()+"\n"+uneFiche.getDate_insertion());
-        }
+            Fiches.add(uneFiche.getId()+"\n"+uneFiche.getQuantite());
+        }*/
 
-        ListAccueil.setAdapter(new ArrayAdapter<String>(this,R.layout.activity_main,R.id.ListViewAccueil,Fiches));
-        */
+        /**
+         *
+         */
+
+        /*ListViewAccueil.setAdapter(new ArrayAdapter<String>(this,R.layout.activity_main,R.id.ListViewAccueil,Fiches));
+
+        FicDAO.close();*/
 
     }
 }

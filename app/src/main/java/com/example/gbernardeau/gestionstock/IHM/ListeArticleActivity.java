@@ -41,7 +41,7 @@ public class ListeArticleActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+        //---------------------------------------------------------------------------------------------------------
         //afficher le SQL dans la listview (Exemple avec Emplacement)
         EmplacementDAO emplacementDao = new EmplacementDAO(this);
 
@@ -49,21 +49,22 @@ public class ListeArticleActivity extends AppCompatActivity {
         setContentView(R.layout.liste_article);
         mListView = (ListView) findViewById(R.id.listViewArticle);
 
-        //Co à la bdd
+//Co à la bdd
         emplacementDao.open();
-        //récupération des données
+//récupération des données
         ArrayList<Emplacement> ListEmplacement = emplacementDao.read();
-        //Passage dans un ArrayList mais en STRING, pour être géré plus simplement.
+//Passage dans un ArrayList mais en STRING, pour être géré plus simplement.
         ArrayList<String> Emplacements = new ArrayList<String>();
-        //Ajout data dans la liste.
+//Ajout data dans la liste.
         for (Emplacement unEmplacement : ListEmplacement) {
             Emplacements.add(unEmplacement.getId() + "\n" + unEmplacement.getId_rayon() + "\n" + unEmplacement.getLibelle());
         }
-        //déco de la bdd
+//déco de la bdd
         emplacementDao.close();
-        //L'adapter sert à afficher la liste dans la listeView.
+//L'adapter sert à afficher la liste dans la listeView.
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Emplacements);
         mListView.setAdapter(adapter);
+        //---------------------------------------------------------------------------------------------------------
 
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);

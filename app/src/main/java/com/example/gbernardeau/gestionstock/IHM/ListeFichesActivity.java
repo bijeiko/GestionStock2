@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.gbernardeau.gestionstock.DAO.ArticleDAO;
 import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
+import com.example.gbernardeau.gestionstock.METIER.Article;
 import com.example.gbernardeau.gestionstock.METIER.Fiches;
 import com.example.gbernardeau.gestionstock.R;
 
@@ -22,7 +25,7 @@ import java.util.ArrayList;
 
 public class ListeFichesActivity extends AppCompatActivity {
     private Button Accueilbtn, CreateFiche, ToutLesArticles;
-    private ListView Listfiches;
+    private ListView mListView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,10 +60,9 @@ public class ListeFichesActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-        /*//Création d'une instance de ma classe ETATDAO
+//A revoir (ligne de 60 à 77
+/*
+        //Création d'une instance de ma classe ETATDAO
         FichesDAO articles = new FichesDAO(this.getApplicationContext());
 
         //On ouvre la base de données pour écrire dedans
@@ -75,8 +77,31 @@ public class ListeFichesActivity extends AppCompatActivity {
 
         }
 
-        articles.close();
-       */
+        articles.close();*/
+
+        //---------------------------------------------------------------------------------------------------------
+        //afficher le SQL dans la listview (Exemple avec Article)
+        FichesDAO FicDao = new FichesDAO(this);
+
+
+        setContentView(R.layout.liste_fiches);
+        mListView = (ListView) findViewById(R.id.listViewFiches);
+
+        //Co à la bdd
+        FicDao.open();
+        //récupération des données
+        ArrayList<Fiches> ListFiche = FicDao.read();
+        //Passage dans un ArrayList mais en STRING, pour être géré plus simplement.
+        ArrayList<String> Fiches = new ArrayList<String>();
+        //Ajout data dans la liste.
+        for (Fiches uneFiche : ListFiche) {
+            Fiches.add(uneFiche.getId().toString() + uneFiche.getIdetat().toString()+ uneFiche.getQuantite().toString());
+        }
+        //déco de la bdd
+        FicDao.close();
+        //L'adapter sert à afficher la liste dans la listeView.
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Fiches);
+        mListView.setAdapter(adapter);
     }
 
 }
