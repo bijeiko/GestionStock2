@@ -25,7 +25,7 @@ public class CreationFicheActivity extends AppCompatActivity {
      * celui de redirection à Toutes les fiches
      * celui de redirection à Tout les articles
      */
-    private Button bSearch, bTri, accueilbtn, ToutesLesFiches, ToutLesArticles;
+    private Button bSearch, bTri, accueilbtn, ToutesLesFiches, ToutLesArticles, btn_annuler;
 
     /**
      * A la création de la page, des boutons sont créés grâce à la View(R.Layout.creation_fiche)
@@ -57,6 +57,15 @@ public class CreationFicheActivity extends AppCompatActivity {
 
         ToutesLesFiches = (Button) findViewById(R.id.ToutesLesFiches);
         ToutesLesFiches.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activityarticle = new Intent(getApplicationContext(), ListeArticleActivity.class);
+                startActivity(activityarticle);
+            }
+        });
+
+        btn_annuler = (Button) findViewById(R.id.btn_annuler);
+        btn_annuler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent activityarticle = new Intent(getApplicationContext(), ListeArticleActivity.class);

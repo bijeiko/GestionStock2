@@ -59,7 +59,8 @@ public class ListeFichesActivity extends AppCompatActivity {
 
 
 
-        //Création d'une instance de ma classe ETATDAO
+
+        /*//Création d'une instance de ma classe ETATDAO
         FichesDAO articles = new FichesDAO(this.getApplicationContext());
 
         //On ouvre la base de données pour écrire dedans
@@ -75,6 +76,7 @@ public class ListeFichesActivity extends AppCompatActivity {
         }
 
         articles.close();
+       */
     }
 
 }

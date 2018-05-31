@@ -3,16 +3,25 @@ package com.example.gbernardeau.gestionstock.IHM;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.gbernardeau.gestionstock.DAO.ArticleDAO;
+import com.example.gbernardeau.gestionstock.DAO.EmplacementDAO;
+import com.example.gbernardeau.gestionstock.DAO.RayonDAO;
 import com.example.gbernardeau.gestionstock.METIER.Article;
+import com.example.gbernardeau.gestionstock.METIER.Emplacement;
+import com.example.gbernardeau.gestionstock.METIER.Rayon;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,13 +30,41 @@ import java.util.List;
 
 
 public class ListeArticleActivity extends AppCompatActivity {
-    private ListView listViewArticle;
+    private ListView mListView;
     private ArticleDAO ArtDAO;
+    //Test pour emplacement et rayon pour le select
+    private EmplacementDAO emplacementDao;
+    private RayonDAO rayonDao;
+
     private Button bSearch, bTri, Accueilbtn, ToutesLesFiches, CreateFiche;
+    private TextView code;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //---------------------------------------------------------------------------------------------------------
+        //afficher le SQL dans la listview (Exemple avec Emplacement)
+        EmplacementDAO emplacementDao = new EmplacementDAO(this);
+
+
         setContentView(R.layout.liste_article);
+        mListView = (ListView) findViewById(R.id.listViewArticle);
+
+//Co à la bdd
+        emplacementDao.open();
+//récupération des données
+        ArrayList<Emplacement> ListEmplacement = emplacementDao.read();
+//Passage dans un ArrayList mais en STRING, pour être géré plus simplement.
+        ArrayList<String> Emplacements = new ArrayList<String>();
+//Ajout data dans la liste.
+        for (Emplacement unEmplacement : ListEmplacement) {
+            Emplacements.add(unEmplacement.getId() + "\n" + unEmplacement.getId_rayon() + "\n" + unEmplacement.getLibelle());
+        }
+//déco de la bdd
+        emplacementDao.close();
+//L'adapter sert à afficher la liste dans la listeView.
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Emplacements);
+        mListView.setAdapter(adapter);
+        //---------------------------------------------------------------------------------------------------------
 
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
@@ -57,9 +94,15 @@ public class ListeArticleActivity extends AppCompatActivity {
             }
         });
 
+        //Ceci est un essai pour rendre "Code" cliquable pour le tri
+        // EN COURS !
 
+        /*code = (TextView) findViewById(R.id.code);
+        code.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                listViewArticle.setAdapter(adapter);
+            }
+        });*/
     }
-
-
-
 }
