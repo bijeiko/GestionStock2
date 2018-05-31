@@ -112,8 +112,8 @@
                         android:layout_column="0"
                         android:gravity="center"
                         android:text="ID"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="30dp" />
 
                     <TextView
