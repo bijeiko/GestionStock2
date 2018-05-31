@@ -1,11 +1,23 @@
 package com.example.gbernardeau.gestionstock.IHM;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,14 +33,26 @@ import java.util.ArrayList;
  */
 
 public class FichesActivity extends AppCompatActivity {
-    private Button Accueilbtn, CreateFiche, ToutLesArticles;
+    private Button Accueilbtn, CreateFiches, ToutesLesFiches;
     private ListView Listfiches;
+    private FichesDAO DAOF;
+
+    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id){
+        return false;
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.liste_fiches);
+        setContentView(R.layout.activity_fiches);
 
-        ArrayList<Fiches> listesArticle = new ArrayList<Fiches>();
+        setTitle("Gestion des Stocks : Gestion des Fiches");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#C0D904")));
+
+        DAOF = new FichesDAO(this);
+        DAOF.open();
+        refrech_list();
 
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
@@ -39,8 +63,8 @@ public class FichesActivity extends AppCompatActivity {
                 startActivity(activitiemain);
             }
         });
-        CreateFiche = (Button) findViewById(R.id.CreateFiche);
-        CreateFiche.setOnClickListener(new View.OnClickListener() {
+        CreateFiches = (Button) findViewById(R.id.CreateFiches);
+        CreateFiches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent activitycreatefiche = new Intent(getApplicationContext(), CreationFicheActivity.class);
@@ -48,35 +72,21 @@ public class FichesActivity extends AppCompatActivity {
             }
         });
 
-        ToutLesArticles = (Button) findViewById(R.id.ToutLesArticles);
-        ToutLesArticles.setOnClickListener(new View.OnClickListener() {
+        ToutesLesFiches = (Button) findViewById(R.id.ToutesLesFiches);
+        ToutesLesFiches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent activityarticle = new Intent(getApplicationContext(), ListeArticleActivity.class);
                 startActivity(activityarticle);
             }
         });
-
-
-
-
-        /*//Création d'une instance de ma classe ETATDAO
-        FichesDAO articles = new FichesDAO(this.getApplicationContext());
-
-        //On ouvre la base de données pour écrire dedans
-        articles.open();
-
-        // on récupere les donnees
-        listesArticle = articles.read();
-
-        //On les affiches
-        for (Fiches unArticle: listesArticle) {
-            Log.v(unArticle.getQuantite().toString(), "Quantite");
-
-        }
-
-        articles.close();
-       */
     }
 
+    public void refrech_list(){
+
+        ListView listContent = (ListView)findViewById(R.id.eLVFiches);
+        FichesAdapter adapter = new FichesAdapter(this, R.layout.list_fiches, DAOF.read());
+        listContent.setAdapter(adapter);
+        //listContent.setOnItemClickListener(OnClickItem);
+    }
 }

@@ -29,7 +29,7 @@ public class ListeArticleActivity extends AppCompatActivity {
     private EmplacementDAO emplacementDao;
     private RayonDAO rayonDao;
 
-    private Button bSearch, bTri, Accueilbtn, ToutesLesFiches, CreateFiche;
+    private Button bSearch, bTri, Accueilbtn, ToutesLesFiches, CreateFiches;
     private TextView code;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,8 @@ public class ListeArticleActivity extends AppCompatActivity {
         EmplacementDAO emplacementDao = new EmplacementDAO(this);
 
 
-        setContentView(R.layout.liste_article);
-        mListView = (ListView) findViewById(R.id.listViewArticle);
+        //setContentView(R.layout.liste_article);
+        //mListView = (ListView) findViewById(R.id.listViewArticle);
 
         //Co à la bdd
         emplacementDao.open();
@@ -68,8 +68,8 @@ public class ListeArticleActivity extends AppCompatActivity {
             }
         });
         // Bouton Créer fiche
-        CreateFiche = (Button) findViewById(R.id.CreateFiche);
-        CreateFiche.setOnClickListener(new View.OnClickListener() {
+        CreateFiches = (Button) findViewById(R.id.CreateFiches);
+        CreateFiches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent activitycreationfiche = new Intent(getApplicationContext(), CreationFicheActivity.class);

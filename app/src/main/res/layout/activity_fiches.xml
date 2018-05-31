@@ -1,63 +1,169 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${packageName}.${activityClass}" >
+    tools:context="com.example.gbernardeau.gestionstock.IHM.FichesActivity">
 
-    <TableLayout
-        android:id="@+id/tableLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:stretchColumns="0,1">
+    <LinearLayout
+        android:layout_width="1264dp"
+        android:layout_height="647dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="9dp">
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
 
-            <TextView
-                android:id="@+id/textView1"
-                android:text="ID"
-                android:gravity="center"
-                android:layout_column="0">
-            </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:text="Famille"
-                android:gravity="center"
-                android:layout_column="1">
-            </TextView>
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.10" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:text="Emplacement"
-                android:gravity="center"
-                android:layout_column="1">
-            </TextView>
+            <LinearLayout
+                android:layout_width="325dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.10"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:text="Etat"
-                android:gravity="center"
-                android:layout_column="1">
-            </TextView>
+                <Button
+                    android:id="@+id/Accueilbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.34"
+                    android:text="Accueil" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView5"
-                android:text="Date d'entrée"
-                android:gravity="center"
-                android:layout_column="1">
-            </TextView>
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3" />
 
-        </TableRow>
+            <LinearLayout
+                android:layout_width="325dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-    </TableLayout>
+                <Button
+                    android:id="@+id/CreateFiches"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Créer une fiche" />
 
-    <ListView
-        android:id="@+id/eLVMatiere"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableLayout1" />
+            </LinearLayout>
 
-</RelativeLayout>
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3" />
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/ToutesLesFiches"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Toutes les fiches" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.10" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="1276dp"
+                android:layout_height="92dp"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="89dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:gravity="center"
+                        android:text="ID"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAlignment="center"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="450dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:gravity="center"
+                        android:text="Famille"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="520dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:gravity="center"
+                        android:text="Emplacement"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="215dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:text="Etat"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textAlignment="center"
+                        android:textSize="30dp" />
+
+                </TableRow>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/eLVFiches"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="11.03"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="true" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

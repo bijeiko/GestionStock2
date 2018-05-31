@@ -32,12 +32,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".IHM.MainActivity" />
         </activity>
-        <activity android:name=".IHM.FichesAdapter"
-            android:parentActivityName=".IHM.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".IHM.MainActivity" />
-        </activity>
     </application>
 
 </manifest>

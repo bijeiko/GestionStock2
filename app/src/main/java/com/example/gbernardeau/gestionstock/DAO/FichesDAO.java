@@ -113,7 +113,7 @@ public class FichesDAO extends DAO<Fiches> {
      */
     public Fiches read(long id) {
         Cursor res = db.query(Table_FICHES, null, null, null, null, null, null);
-        Fiches uneFiche = new Fiches(res.getInt(0), res.getInt(1), null);
+        Fiches uneFiche = new Fiches(res.getInt(0), res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4));
         return uneFiche;
     }
     /**
@@ -124,6 +124,10 @@ public class FichesDAO extends DAO<Fiches> {
         ArrayList<Fiches> listFiches = new ArrayList<Fiches>();
         int id;
         int qte;
+        int idetat;
+        int idarticle;
+        int idemp;
+
         Fiches ma;
         Cursor res;
         res = db.query(Table_FICHES, null, null, null, null, null, null, "10");
@@ -131,7 +135,10 @@ public class FichesDAO extends DAO<Fiches> {
         while (!res.isAfterLast()) {
             id = res.getInt(0);
             qte = res.getInt(1);
-            ma = new Fiches(id, qte, null);
+            idetat = res.getInt(2);
+            idarticle = res.getInt(3);
+            idemp = res.getInt(4);
+            ma = new Fiches(id, qte, idetat, idarticle, idemp);
             listFiches.add(ma);
             res.moveToNext();
         }

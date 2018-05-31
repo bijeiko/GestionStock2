@@ -10,6 +10,7 @@ import com.example.gbernardeau.gestionstock.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         this.layoutResourceId = layoutResourceId;
         this.context = context;
         this.listfiches = data;
+        Log.v("test", "test");
     }
 
     @Override
@@ -44,7 +46,6 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
             holder.famille = (TextView)row.findViewById(R.id.fiches_famille);
             holder.emplacement = (TextView)row.findViewById(R.id.fiches_emplacement);
             holder.etat = (TextView)row.findViewById(R.id.fiches_etat);
-            holder.date_entree = (TextView)row.findViewById(R.id.fiches_date_entree);
 
             row.setTag(holder);
         }
@@ -55,10 +56,9 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
 
         Fiches fiches = listfiches.get(position);
         holder.id.setText(fiches.getId());
-        holder.famille.setText(Float.toString(fiches.getQuantite()));
-        holder.emplacement.setText(Float.toString(fiches.getQuantite()));
-        holder.etat.setText(Float.toString(fiches.getQuantite()));
-        holder.date_entree.setText(Float.toString(fiches.getQuantite()));
+        holder.famille.setText(Float.toString(fiches.getIdarticle()));
+        holder.emplacement.setText(Float.toString(fiches.getIdemp()));
+        holder.etat.setText(Float.toString(fiches.getIdetat()));
 
 
         return row;
@@ -70,6 +70,5 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         TextView famille;
         TextView emplacement;
         TextView etat;
-        TextView date_entree;
     }
 }
