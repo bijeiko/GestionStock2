@@ -57,6 +57,12 @@ public class Emplacement {
         return libelle;
     }
 
+
+    public String getLibelleById(int id) {
+
+        return libelle;
+    }
+
     /**
      * Permet de définir le libelle passé en paramètre.
      * @param libelle

@@ -55,7 +55,7 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         Fiches fiches = listfiches.get(position);
         holder.id.setText(fiches.getId().toString());
         holder.famille.setText(fiches.getIdarticle().toString());
-        holder.emplacement.setText(fiches.getIdemp().toString());
+        holder.emplacement.setText(fiches.getLibelleidemp().toString());
         holder.etat.setText(fiches.getIdetat().toString());
 
         return row;
