@@ -78,14 +78,14 @@ public class MainActivity extends AppCompatActivity {
         ToutesLesFiches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent activityfiche = new Intent(getApplicationContext(), ListeFichesActivity.class);
+                Intent activityfiche = new Intent(getApplicationContext(), FichesActivity.class);
                 startActivity(activityfiche);
             }
         });
 
         ArticleDAO ArtDao = new ArticleDAO(this);
 
-
+//a modifer pour lancer
         setContentView(R.layout.liste_article);
         mListView = (ListView) findViewById(R.id.listViewArticle);
 
