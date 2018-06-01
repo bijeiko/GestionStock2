@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
         ArticleDAO ArtDao = new ArticleDAO(this);
 
 //a modifer pour lancer
-        setContentView(R.layout.liste_article);
-        mListView = (ListView) findViewById(R.id.listViewArticle);
+        setContentView(R.layout.list_articles);
+        mListView = (ListView) findViewById(R.id.listview_article);
 
         //Co à la bdd
         ArtDao.open();
