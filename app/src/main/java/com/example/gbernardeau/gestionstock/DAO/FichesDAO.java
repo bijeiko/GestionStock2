@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.gbernardeau.gestionstock.METIER.Fiches;
 
@@ -23,8 +24,10 @@ public class FichesDAO extends DAO<Fiches> {
 
     private static final String Table_FICHES = "FICHE";
     private static final String COL_ID = "ID";
-    private static final String COL_ID_AVOIR = "ID_AVOIR";
     private static final String COL_QUANTITE = "QUANTITE";
+    private static final String COL_IDETAT = "IDETAT";
+    private static final String COL_IDARTICLE = "IDARTICLE";
+    private static final String COL_IDEMP = "IDEMP";
 
     private static final String COL_DATE_INSERTION = "DATE_INSERTION";
 
@@ -113,7 +116,7 @@ public class FichesDAO extends DAO<Fiches> {
      */
     public Fiches read(long id) {
         Cursor res = db.query(Table_FICHES, null, null, null, null, null, null);
-        Fiches uneFiche = new Fiches(res.getInt(0), res.getInt(1), null);
+        Fiches uneFiche = new Fiches(res.getInt(0), res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4));
         return uneFiche;
     }
     /**
@@ -124,15 +127,23 @@ public class FichesDAO extends DAO<Fiches> {
         ArrayList<Fiches> listFiches = new ArrayList<Fiches>();
         int id;
         int qte;
+        int idetat;
+        int idarticle;
+        int idemp;
+
         Fiches ma;
         Cursor res;
-        res = db.query(Table_FICHES, null, null, null, null, null, null, "10");
+        res = db.query(Table_FICHES, null, null, null, null, null, null);
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
             qte = res.getInt(1);
-            ma = new Fiches(id, qte, null);
+            idetat = res.getInt(2);
+            idarticle = res.getInt(3);
+            idemp = res.getInt(4);
+            ma = new Fiches(id, qte, idetat, idarticle, idemp);
             listFiches.add(ma);
+
             res.moveToNext();
         }
 

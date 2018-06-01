@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".IHM.ListeFichesActivity"
+        <activity android:name=".IHM.FichesActivity"
             android:label="Listes fiches"
             android:parentActivityName=".IHM.MainActivity">
             <meta-data
@@ -26,13 +26,9 @@
                 android:value=".IHM.MainActivity" />
         </activity>
 
+        <activity android:name=".IHM.FichesAdapter"></activity>
+
         <activity android:name=".IHM.ListeArticleActivity"
-            android:parentActivityName=".IHM.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".IHM.MainActivity" />
-        </activity>
-        <activity android:name=".IHM.CreationFicheActivity"
             android:parentActivityName=".IHM.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
