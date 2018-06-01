@@ -12,10 +12,12 @@ import android.widget.TextView;
 import com.example.gbernardeau.gestionstock.DAO.ArticleDAO;
 import com.example.gbernardeau.gestionstock.DAO.EmplacementDAO;
 import com.example.gbernardeau.gestionstock.DAO.RayonDAO;
+import com.example.gbernardeau.gestionstock.METIER.Article;
 import com.example.gbernardeau.gestionstock.METIER.Emplacement;
 import com.example.gbernardeau.gestionstock.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by gbernardeau on 03/04/2018.
@@ -24,39 +26,40 @@ import java.util.ArrayList;
 
 public class ListeArticleActivity extends AppCompatActivity {
     private ListView mListView;
-    private ArticleDAO ArtDAO;
     //Test pour emplacement et rayon pour le select
     private EmplacementDAO emplacementDao;
     private RayonDAO rayonDao;
+
+    ArticleDAO ArtDAO = new ArticleDAO(this);
 
     private Button bSearch, bTri, Accueilbtn, ToutesLesFiches, CreateFiches;
     private TextView code;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        //afficher le SQL dans la listview (Exemple avec Emplacement)
-        EmplacementDAO emplacementDao = new EmplacementDAO(this);
-
+        //---------------------------------------------------------------------------------------------------------
 
         //setContentView(R.layout.liste_article);
         //mListView = (ListView) findViewById(R.id.listViewArticle);
 
-        //Co à la bdd
-        emplacementDao.open();
-        //récupération des données
-        ArrayList<Emplacement> ListEmplacement = emplacementDao.read();
-        //Passage dans un ArrayList mais en STRING, pour être géré plus simplement.
-        ArrayList<String> Emplacements = new ArrayList<String>();
-        //Ajout data dans la liste.
-        for (Emplacement unEmplacement : ListEmplacement) {
-            Emplacements.add(unEmplacement.getId() + "\n" + unEmplacement.getId_rayon() + "\n" + unEmplacement.getLibelle());
+    //Co à la bdd
+        ArtDAO.open();
+    //récupération des données
+        ArrayList<Article> ListArticle = ArtDAO.read();
+    //Passage dans un ArrayList mais en STRING, pour être géré plus simplement.
+        ArrayList<String> Articles = new ArrayList<String>();
+    //Ajout data dans la liste.
+        for (Article unArticle : ListArticle) {
+            Articles.add(unArticle.getCode() + " ensuite " + unArticle.getStock() + " ensuite " +
+                    unArticle.getIdemp()+ " ensuite " + unArticle.getIdfam() + " ensuite " +
+            unArticle.getDesignation());
         }
-        //déco de la bdd
-        emplacementDao.close();
-        //L'adapter sert à afficher la liste dans la listeView.
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Emplacements);
+    //déco de la bdd
+        ArtDAO.close();
+    //L'adapter sert à afficher la liste dans la listeView.
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Articles);
         mListView.setAdapter(adapter);
+        //---------------------------------------------------------------------------------------------------------
 
         // Bouton navigation
         Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
@@ -89,12 +92,21 @@ public class ListeArticleActivity extends AppCompatActivity {
         //Ceci est un essai pour rendre "Code" cliquable pour le tri
         // EN COURS !
 
-        /*code = (TextView) findViewById(R.id.code);
+        code = (TextView) findViewById(R.id.code);
         code.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                listViewArticle.setAdapter(adapter);
+                ArtDAO.open();
+                ArrayList<Article> ListArticle = ArtDAO.readDesc();
+                ArrayList<String> Articles = new ArrayList<String>();
+                for (Article unArticle : ListArticle) {
+                    Articles.add(unArticle.getCode() + " ensuite " + unArticle.getStock() + " ensuite " +
+                            unArticle.getIdemp() + " ensuite " + unArticle.getIdfam() + " ensuite " +
+                            unArticle.getDesignation());
+                }
+                ArtDAO.close();
+                mListView.setAdapter(adapter);
             }
-        });*/
+        });
     }
 }
