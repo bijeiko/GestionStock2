@@ -50,7 +50,7 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
 
             db.execSQL("CREATE TABLE FICHE (ID integer PRIMARY KEY autoincrement, QUANTITE integer NOT NULL, IDETAT integer NOT NULL, IDARTICLE integer NOT NULL, IDEMP integer NOT NULL, CONSTRAINT fk_idetat FOREIGN KEY (idetat) REFERENCES ETAT (ID))");
             db.execSQL("INSERT INTO FICHE (quantite, idetat, idarticle, idemp) VALUES (5, 1, 1, 1)");
-            db.execSQL("INSERT INTO FICHE (quantite, idetat, idarticle, idemp) VALUES (2, 2, 2, 1)");
+            db.execSQL("INSERT INTO FICHE (quantite, idetat, idarticle, idemp) VALUES (2, 2, 2, 2)");
 
 
         } catch (Exception e) {

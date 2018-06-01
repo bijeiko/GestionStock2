@@ -125,10 +125,21 @@ public class FichesDAO extends DAO<Fiches> {
         return uneFiche;
     }
 
-    public String selectlib(int id) {
-        Cursor res = null;
-        res = db.rawQuery("SELECT emp.libelle FROM " + Table_FICHES + " f INNER JOIN EMPLACEMENT emp ON f." + COL_IDEMP + "= emp.ID  WHERE " + COL_IDEMP + "=" + id, null);
-        return res.getString(0).toString();
+    public String selectlibEmp(int id) {
+        Cursor res;
+        res = db.rawQuery("SELECT EMPLACEMENT.LIBELLE, RAYON.LIBELLE  FROM EMPLACEMENT INNER JOIN "+ Table_FICHES +" ON EMPLACEMENT.ID = IDEMP INNER JOIN RAYON ON EMPLACEMENT.IDRAYON = RAYON.ID WHERE IDEMP = " + id + " ", null);
+        res.moveToFirst();
+        Log.v(res.getString(0), "test3");
+        return res.getString(1) + "-" + res.getString(0);
+    }
+
+    public String selectlibArticle(int id) {
+        Cursor res;
+        Log.v("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.ID = IDARTICLE WHERE IDARTICLE = " + id + " ", "Test req");
+        res = db.rawQuery("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.ID = IDARTICLE WHERE IDARTICLE = " + id + " ", null);
+        res.moveToFirst();
+        Log.v(res.getString(0), "test3");
+        return res.getString(1) + "-" + res.getString(0);
     }
     /**
      * Fonction retournant un ArrayList peuplé de curseur ayant des données qui sont ajoutées à chaque tour de boucle.

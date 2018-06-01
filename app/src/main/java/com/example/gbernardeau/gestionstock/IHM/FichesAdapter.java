@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 public class FichesAdapter extends ArrayAdapter<Fiches> {
     String libemp;
+    String libarticle;
     Context context;
     int layoutResourceId;
     private FichesDAO DAOF;
@@ -39,7 +40,6 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         MatiereHolder holder = null;
         DAOF = new FichesDAO(this.getContext());
         DAOF.open();
-
         if(row == null)
         {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
@@ -57,9 +57,12 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         }
 
         Fiches fiches = listfiches.get(position);
-        libemp = DAOF.selectlib(fiches.getId()) ;
+
+        libemp = DAOF.selectlibEmp(fiches.getIdemp());
+        libarticle = DAOF.selectlibArticle(fiches.getIdarticle());
+
         holder.id.setText(fiches.getId().toString());
-        holder.famille.setText(fiches.getIdarticle().toString());
+        holder.famille.setText(libarticle.toString());
         holder.emplacement.setText(libemp.toString());
         holder.etat.setText(fiches.getIdetat().toString());
 

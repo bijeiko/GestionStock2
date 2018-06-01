@@ -194,7 +194,6 @@ public class FichesActivity extends AppCompatActivity {
                     .setCancelable(true)
                     .setPositiveButton("Modifier",new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int id) {
-                            Log.v("test", "test");
                             Context context = getApplicationContext();
                             int duration = Toast.LENGTH_LONG;
                             if(!(eTQuantite.getText().length() == 0) && !(eTDesignation.getText().length() == 0)){
