@@ -37,6 +37,7 @@ public class FichesActivity extends AppCompatActivity {
     private Button Accueilbtn, CreateFiches, ToutesLesFiches;
     private ListView Listfiches;
     private FichesDAO DAOF;
+    private String libemp;
 
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id){
         return false;
@@ -134,6 +135,7 @@ public class FichesActivity extends AppCompatActivity {
                         int duration = Toast.LENGTH_LONG;
 
                         if(!(eTQuantite.getText().length() == 0) && !(eTDesignation.getText().length() == 0)){
+
                             Fiches ma= new Fiches( DAOF.getLastIdFiches(),Integer.getInteger(eTQuantite.getText().toString()), Setat.getId(), Sfamille.getId(), Semplacement.getId());
                             DAOF.create(ma);
                             refrech_list();

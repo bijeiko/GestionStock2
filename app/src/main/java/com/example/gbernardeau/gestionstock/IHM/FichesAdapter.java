@@ -5,6 +5,7 @@ package com.example.gbernardeau.gestionstock.IHM;
  */
 import java.util.ArrayList;
 
+import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
 import com.example.gbernardeau.gestionstock.METIER.Fiches;
 import com.example.gbernardeau.gestionstock.R;
 
@@ -18,9 +19,10 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 public class FichesAdapter extends ArrayAdapter<Fiches> {
-
+    String libemp;
     Context context;
     int layoutResourceId;
+    private FichesDAO DAOF;
     ArrayList<Fiches> listfiches = null;
 
     public FichesAdapter(Context context, int layoutResourceId, ArrayList<Fiches> data) {
@@ -35,6 +37,8 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
         MatiereHolder holder = null;
+        DAOF = new FichesDAO(this.getContext());
+        DAOF.open();
 
         if(row == null)
         {
@@ -53,9 +57,10 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         }
 
         Fiches fiches = listfiches.get(position);
+        libemp = DAOF.selectlib(fiches.getId()) ;
         holder.id.setText(fiches.getId().toString());
         holder.famille.setText(fiches.getIdarticle().toString());
-        holder.emplacement.setText(fiches.getLibelleidemp().toString());
+        holder.emplacement.setText(libemp.toString());
         holder.etat.setText(fiches.getIdetat().toString());
 
         return row;

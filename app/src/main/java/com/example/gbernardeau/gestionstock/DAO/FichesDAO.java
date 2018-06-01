@@ -124,6 +124,12 @@ public class FichesDAO extends DAO<Fiches> {
         Fiches uneFiche = new Fiches(res.getInt(0), res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4));
         return uneFiche;
     }
+
+    public String selectlib(int id) {
+        Cursor res = null;
+        res = db.rawQuery("SELECT emp.libelle FROM " + Table_FICHES + " f INNER JOIN EMPLACEMENT emp ON f." + COL_IDEMP + "= emp.ID  WHERE " + COL_IDEMP + "=" + id, null);
+        return res.getString(0).toString();
+    }
     /**
      * Fonction retournant un ArrayList peuplé de curseur ayant des données qui sont ajoutées à chaque tour de boucle.
      * @return listFiches

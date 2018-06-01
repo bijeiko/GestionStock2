@@ -22,7 +22,6 @@ public class Fiches {
     private Integer idetat;
     private Integer idarticle;
     private Integer idemp;
-    private ArrayList<Emplacement> lesemplacements;
 
     public Fiches(Integer id, Integer quantite, Integer idetat, Integer idarticle, Integer idemp) {
         this.id = id;
@@ -30,13 +29,6 @@ public class Fiches {
         this.idetat = idetat;
         this.idarticle = idarticle;
         this.idemp = idemp;
-    }
-    public String getLibelleidemp(int idempl) {
-        String res;
-        Emplacement emp = ;
-        emp.getLibelleById(idempl);
-
-        return res;
     }
 
     public Integer getId() {
