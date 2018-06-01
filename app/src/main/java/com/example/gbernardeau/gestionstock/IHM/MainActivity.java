@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(activityfiche);
             }
         });
-
+/*
         ArticleDAO ArtDao = new ArticleDAO(this);
 
 //a modifer pour lancer
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         ArtDao.close();
         //L'adapter sert à afficher la liste dans la listeView.
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Articles);
-        mListView.setAdapter(adapter);
+        mListView.setAdapter(adapter);*/
 
         /**
          * Test population ListView
