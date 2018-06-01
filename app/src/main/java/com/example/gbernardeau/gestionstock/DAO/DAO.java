@@ -7,5 +7,5 @@ package com.example.gbernardeau.gestionstock.DAO;
 public abstract class DAO<T> {
     public abstract boolean insert(T obj);
     public abstract boolean update(T obj);
-    public  abstract boolean delete(T obj);
+    public  abstract T delete(T obj);
 }

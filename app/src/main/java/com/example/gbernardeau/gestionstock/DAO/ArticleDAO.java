@@ -101,7 +101,7 @@ public class ArticleDAO extends DAO<Article> {
      * @param obj
      * @return res
      */
-    public boolean delete(Article obj) {
+    public Article delete(Article obj) {
         boolean res;
         int delete;
         res = false;
@@ -109,7 +109,7 @@ public class ArticleDAO extends DAO<Article> {
         if (delete > 0) {
             res = true;
         }
-        return res;
+        return null;
     }
 
     /**

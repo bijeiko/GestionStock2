@@ -24,8 +24,8 @@
             android:weightSum="1">
 
             <LinearLayout
-                android:layout_width="280dp"
-                android:layout_height="45dp"
+                android:layout_width="276dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/drawable"
                 android:orientation="horizontal"
                 android:weightSum="1">
@@ -41,19 +41,54 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="282dp"
-                android:layout_height="wrap_content"
+                android:layout_width="295dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/drawable"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
                 <EditText
                     android:id="@+id/TQuantite"
-                    android:layout_width="match_parent"
+                    android:layout_width="287dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName" />
 
+            </LinearLayout>
+
+            <Space
+                android:layout_width="53dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.10" />
+
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="45dp"
+                android:background="@drawable/drawable"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/Etat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Etat"
+                    android:textAlignment="center"
+                    android:textSize="30dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="282dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <Spinner
+                    android:id="@+id/Setat"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -208,13 +243,13 @@
                     <LinearLayout
                         android:layout_width="919dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="0.06"
                         android:background="@drawable/drawable"
                         android:orientation="horizontal"
-                        android:weightSum="1"
-                        android:layout_weight="0.06">
+                        android:weightSum="1">
 
                         <Spinner
-                            android:id="@+id/spinner2"
+                            android:id="@+id/Sfamille"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1" />

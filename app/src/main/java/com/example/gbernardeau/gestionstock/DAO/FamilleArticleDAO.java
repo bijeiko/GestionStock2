@@ -95,7 +95,7 @@ public class FamilleArticleDAO extends DAO<Famille_Article> {
      * @param obj
      * @return res
      */
-    public boolean delete(Famille_Article obj) {
+    public Famille_Article delete(Famille_Article obj) {
         boolean res;
         int delete;
         res = false;
@@ -103,7 +103,7 @@ public class FamilleArticleDAO extends DAO<Famille_Article> {
         if (delete > 0) {
             res = true;
         }
-        return res;
+        return null;
     }
     /**
      * Permet d'effectuer un READ par le biais d'un curseur qui permet d'intéragir avec les résultats d'une requête SQL.

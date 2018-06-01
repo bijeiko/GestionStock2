@@ -91,7 +91,7 @@ public class RayonDAO extends DAO<Rayon> {
      * @param obj
      * @return res
      */
-    public boolean delete(Rayon obj) {
+    public Rayon delete(Rayon obj) {
         boolean res;
         int delete;
         res = false;
@@ -99,7 +99,7 @@ public class RayonDAO extends DAO<Rayon> {
         if (delete > 0) {
             res = true;
         }
-        return res;
+        return null;
     }
     /**
      * Permet d'effectuer un READ par le biais d'un curseur qui permet d'intéragir avec les résultats d'une requête SQL.

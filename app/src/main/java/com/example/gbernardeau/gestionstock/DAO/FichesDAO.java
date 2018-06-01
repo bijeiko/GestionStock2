@@ -74,6 +74,17 @@ public class FichesDAO extends DAO<Fiches> {
         }
         return res;
     }
+
+    public Fiches create(Fiches ma) {
+        ContentValues valeursSQL = new ContentValues();
+        valeursSQL.put(COL_QUANTITE, ma.getQuantite());
+        valeursSQL.put(COL_IDETAT, ma.getIdetat());
+        valeursSQL.put(COL_IDARTICLE, ma.getIdarticle());
+        valeursSQL.put(COL_IDEMP, ma.getIdemp());
+
+        db.insert(Table_FICHES, null, valeursSQL);
+        return null;
+    }
     /**
      * Permet d'effectuer un UPDATE en tenant compte de obj qui est un objet de Fiches, passé en paramètre.
      * La fonction retourne un booléen en fonction du résultat.
@@ -98,15 +109,9 @@ public class FichesDAO extends DAO<Fiches> {
      * @param obj
      * @return res
      */
-    public boolean delete(Fiches obj) {
-        boolean res;
-        int delete;
-        res = false;
-        delete = db.delete(Table_FICHES, null, null);
-        if (delete > 0) {
-            res = true;
-        }
-        return res;
+    public Fiches delete(Fiches obj) {
+        db.delete(Table_FICHES, COL_ID+"="+obj.getId(), null);
+        return null;
     }
     /**
      * Permet d'effectuer un READ par le biais d'un curseur qui permet d'intéragir avec les résultats d'une requête SQL.
@@ -150,4 +155,22 @@ public class FichesDAO extends DAO<Fiches> {
         return listFiches;
     }
 
+    public int getLastIdFiches(){
+        int res;
+        Cursor C = db.query(Table_FICHES, null, null, null,null,null,null);
+        res = C.getCount();
+        C.close();
+        return res;
+    }
+
+    public Fiches readAtCursor(int id){
+        Fiches retFiches = null;
+        Cursor C = db.query(Table_FICHES, null, null, null,null,null,null);
+        C.moveToFirst();
+        if(C.moveToPosition(id)){
+            retFiches = new Fiches(C.getInt(0), C.getInt(1), C.getInt(2), C.getInt(3), C.getInt(4));
+        }
+        C.close();
+        return retFiches;
+    }
 }

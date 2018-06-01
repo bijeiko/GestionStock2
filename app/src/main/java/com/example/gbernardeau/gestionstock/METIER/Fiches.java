@@ -20,6 +20,7 @@ public class Fiches {
     private Integer idarticle;
     private Integer idemp;
 
+
     public Fiches(Integer id, Integer quantite, Integer idetat, Integer idarticle, Integer idemp) {
         this.id = id;
         this.quantite = quantite;

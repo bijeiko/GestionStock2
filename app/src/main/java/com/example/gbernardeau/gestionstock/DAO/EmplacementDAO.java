@@ -99,7 +99,7 @@ public class EmplacementDAO extends DAO<Emplacement> {
      * @param obj
      * @return res
      */
-    public boolean delete(Emplacement obj) {
+    public Emplacement delete(Emplacement obj) {
         boolean res;
         int delete;
         res = false;
@@ -107,7 +107,7 @@ public class EmplacementDAO extends DAO<Emplacement> {
         if (delete > 0) {
             res = true;
         }
-        return res;
+        return null;
     }
 
     /**

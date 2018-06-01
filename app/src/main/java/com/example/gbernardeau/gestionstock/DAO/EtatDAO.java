@@ -91,7 +91,7 @@ public class EtatDAO extends DAO<Etat> {
      * @param obj
      * @return res
      */
-    public boolean delete(Etat obj) {
+    public Etat delete(Etat obj) {
         boolean res;
         int delete;
         res = false;
@@ -99,7 +99,7 @@ public class EtatDAO extends DAO<Etat> {
         if (delete > 0) {
             res = true;
         }
-        return res;
+        return null;
     }
     /**
      * Permet d'effectuer un READ par le biais d'un curseur qui permet d'intéragir avec les résultats d'une requête SQL.
