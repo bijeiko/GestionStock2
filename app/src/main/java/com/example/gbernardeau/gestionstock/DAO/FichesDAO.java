@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.gbernardeau.gestionstock.METIER.Article;
+import com.example.gbernardeau.gestionstock.METIER.Emplacement;
+import com.example.gbernardeau.gestionstock.METIER.Etat;
 import com.example.gbernardeau.gestionstock.METIER.Fiches;
 
 import java.util.ArrayList;
@@ -121,25 +124,37 @@ public class FichesDAO extends DAO<Fiches> {
      */
     public Fiches read(long id) {
         Cursor res = db.query(Table_FICHES, null, null, null, null, null, null);
-        Fiches uneFiche = new Fiches(res.getInt(0), res.getInt(1), res.getInt(2), res.getInt(3), res.getInt(4));
+        Fiches uneFiche = new Fiches(res.getInt(0), res.getInt(1), res.getInt(2), res.getString(3), res.getInt(4));
         return uneFiche;
     }
 
     public String selectlibEmp(int id) {
         Cursor res;
-        res = db.rawQuery("SELECT EMPLACEMENT.LIBELLE, RAYON.LIBELLE  FROM EMPLACEMENT INNER JOIN "+ Table_FICHES +" ON EMPLACEMENT.ID = IDEMP INNER JOIN RAYON ON EMPLACEMENT.IDRAYON = RAYON.ID WHERE IDEMP = " + id + " ", null);
+        Log.v(Integer.toString(id), "-----------");
+        res = db.rawQuery("SELECT EMPLACEMENT.LIBELLE, RAYON.LIBELLE  FROM EMPLACEMENT INNER JOIN "+ Table_FICHES +" ON EMPLACEMENT.ID = IDEMP INNER JOIN RAYON ON EMPLACEMENT.IDRAYON = RAYON.ID WHERE IDEMP = " + id, null);
         res.moveToFirst();
-        Log.v(res.getString(0), "test3");
+//        Log.v(res.getString(0), "test3");
         return res.getString(1) + "-" + res.getString(0);
     }
 
-    public String selectlibArticle(int id) {
+    public String selectlibArticle(String id) {
         Cursor res;
-        Log.v("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.ID = IDARTICLE WHERE IDARTICLE = " + id + " ", "Test req");
-        res = db.rawQuery("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.ID = IDARTICLE WHERE IDARTICLE = " + id + " ", null);
+        System.out.println("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.CODE = IDARTICLE WHERE IDARTICLE = " + id);
+        //        Log.v("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.ID = IDARTICLE WHERE IDARTICLE = " + id + " ", "Test req");
+        res = db.rawQuery("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.CODE = IDARTICLE WHERE IDARTICLE = '" + id + "'", null);
         res.moveToFirst();
-        Log.v(res.getString(0), "test3");
-        return res.getString(1) + "-" + res.getString(0);
+        Log.v(res.getString(0), "test4");
+        return res.getString(0);
+    }
+
+    public String selectlibEtat(String id) {
+        Cursor res;
+        System.out.println("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.CODE = IDARTICLE WHERE IDARTICLE = " + id);
+        //        Log.v("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.ID = IDARTICLE WHERE IDARTICLE = " + id + " ", "Test req");
+        res = db.rawQuery("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.CODE = IDARTICLE WHERE IDARTICLE = '" + id + "'", null);
+        res.moveToFirst();
+        Log.v(res.getString(0), "test4");
+        return res.getString(0);
     }
     /**
      * Fonction retournant un ArrayList peuplé de curseur ayant des données qui sont ajoutées à chaque tour de boucle.
@@ -150,7 +165,7 @@ public class FichesDAO extends DAO<Fiches> {
         int id;
         int qte;
         int idetat;
-        int idarticle;
+        String idarticle;
         int idemp;
 
         Fiches ma;
@@ -159,10 +174,15 @@ public class FichesDAO extends DAO<Fiches> {
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
+            Log.v(res.getString(0), "id");
             qte = res.getInt(1);
+            Log.v(res.getString(1), "Quantite");
             idetat = res.getInt(2);
-            idarticle = res.getInt(3);
+            Log.v(res.getString(2), "IdEtat");
+            idarticle = res.getString(3);
+            Log.v(res.getString(3), "IdArticle");
             idemp = res.getInt(4);
+            Log.v(res.getString(4), "IdEmp");
             ma = new Fiches(id, qte, idetat, idarticle, idemp);
             listFiches.add(ma);
 
@@ -185,7 +205,7 @@ public class FichesDAO extends DAO<Fiches> {
         Cursor C = db.query(Table_FICHES, null, null, null,null,null,null);
         C.moveToFirst();
         if(C.moveToPosition(id)){
-            retFiches = new Fiches(C.getInt(0), C.getInt(1), C.getInt(2), C.getInt(3), C.getInt(4));
+            retFiches = new Fiches(C.getInt(0), C.getInt(1), C.getInt(2), C.getString(3), C.getInt(4));
         }
         C.close();
         return retFiches;

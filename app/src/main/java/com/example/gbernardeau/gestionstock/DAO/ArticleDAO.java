@@ -143,10 +143,15 @@ public class ArticleDAO extends DAO<Article> {
         res.moveToFirst();
         while (!res.isAfterLast()) {
             code = res.getString(0);
+            Log.v(res.getString(0), "Code");
             lib = res.getString(1);
+            Log.v(res.getString(1), "Lib");
             stock = res.getInt(2);
+            Log.v(res.getString(2), "Stock");
             idemp = res.getInt(3);
+            Log.v(res.getString(3), "IdEmp");
             idfam = res.getInt(4);
+            Log.v(res.getString(4), "IdFam");
             ma = new Article(code, lib, stock, idemp, idfam);
             listArticle.add(ma);
             res.moveToNext();
