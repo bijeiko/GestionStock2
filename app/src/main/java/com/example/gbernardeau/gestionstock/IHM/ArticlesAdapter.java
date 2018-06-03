@@ -61,7 +61,7 @@ public class ArticlesAdapter extends ArrayAdapter<Article> {
         libfamille = ArtDAO.selectlibFamille(articles.getIdfam());
 
         holder.code.setText(articles.getCode());
-        holder.designation.setText(articles.getDesignation());
+        holder.designation.setText(articles.getLibelle());
         holder.stock.setText(Integer.toString(articles.getStock()));
         holder.emplacement.setText(libemp.toString());
         holder.famille.setText(libfamille.toString());

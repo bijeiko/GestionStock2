@@ -48,6 +48,7 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
             holder = new MatiereHolder();
             holder.id = (TextView)row.findViewById(R.id.fiches_id);
             holder.famille = (TextView)row.findViewById(R.id.fiches_famille);
+            holder.quantite = (TextView)row.findViewById(R.id.fiches_quantite);
             holder.emplacement = (TextView)row.findViewById(R.id.fiches_emplacement);
             holder.etat = (TextView)row.findViewById(R.id.fiches_etat);
             row.setTag(holder);
@@ -64,6 +65,7 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
 
         holder.id.setText(fiches.getId().toString());
         holder.famille.setText(libarticle.toString());
+        holder.quantite.setText(fiches.getQuantite().toString());
         holder.emplacement.setText(libemp.toString());
         holder.etat.setText(libetat.toString());
 
@@ -76,5 +78,6 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         TextView famille;
         TextView emplacement;
         TextView etat;
+        TextView quantite;
     }
 }
