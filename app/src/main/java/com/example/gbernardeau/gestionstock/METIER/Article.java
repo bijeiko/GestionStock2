@@ -28,6 +28,13 @@ public class Article {
         this.idfam = idfam;
     }
 
+    /**
+     * Constructeur optionnel ne prenant pas en compte le code (l'id d'article).
+     * @param designation
+     * @param stock
+     * @param idemp
+     * @param idfam
+     */
     public Article(String designation, Integer stock, Integer idemp, Integer idfam){
         this.designation = designation;
         this.stock = stock;

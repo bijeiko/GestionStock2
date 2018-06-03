@@ -32,6 +32,11 @@ public class Emplacement {
 
     }
 
+    /**
+     * Constructeur optionnel ne prenant pas en compte l'id.
+     * @param idrayon
+     * @param libelle
+     */
     public Emplacement(Integer idrayon, String libelle){
         this.idrayon=idrayon;
         this.libelle=libelle;

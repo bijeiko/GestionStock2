@@ -21,6 +21,10 @@ public class Etat {
         this.libelle = libelle;
     }
 
+    /**
+     * Constructeur optionnel ne prenant pas en compte l'id.
+     * @param libelle
+     */
     public Etat(String libelle){
         this.libelle=libelle;
     }

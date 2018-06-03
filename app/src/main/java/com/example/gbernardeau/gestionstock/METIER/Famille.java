@@ -25,6 +25,10 @@ public class Famille {
         this.libelle = libelle;
     }
 
+    /**
+     * Constructeur optionnel ne prenant pas en compte l'id.
+     * @param libelle
+     */
     public Famille(String libelle){
         this.libelle=libelle;
     }

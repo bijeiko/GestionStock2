@@ -28,6 +28,11 @@ public class Famille_Article {
         this.codearticle = codearticle;
     }
 
+    /**
+     * Constructeur optionnel ne prenant pas en compte l'id.
+     * @param idfamille
+     * @param codearticle
+     */
     public Famille_Article(Integer idfamille, String codearticle){
         this.idfamille=idfamille;
         this.idfamille=idfamille;

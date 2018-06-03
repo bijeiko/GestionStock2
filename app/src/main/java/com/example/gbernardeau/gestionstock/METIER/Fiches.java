@@ -31,6 +31,13 @@ public class Fiches {
         this.idemp = idemp;
     }
 
+    /**
+     * Constructeur optionnel ne prenant pas en compte l'id.
+     * @param quantite
+     * @param idetat
+     * @param idarticle
+     * @param idemp
+     */
     public Fiches(Integer quantite, Integer idetat, String idarticle, Integer idemp){
         this.quantite = quantite;
         this.idetat = idetat;
