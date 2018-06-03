@@ -142,8 +142,9 @@ public class RayonDAO extends DAO<Rayon> {
         int idRayon;
         Cursor c;
 
-        c = db.rawQuery("SELECT * FROM " + Table_RAYON + " WHERE LIBELLE = '" + Rayon.getLibelle() + "'", null);
+        c = db.rawQuery("SELECT ID FROM " + Table_RAYON + " WHERE LIBELLE = '" + Rayon.getLibelle() + "'", null);
 
+        c.moveToFirst();
         idRayon = c.getInt(0);
 
         return idRayon;

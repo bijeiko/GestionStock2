@@ -154,8 +154,9 @@ public class EmplacementDAO extends DAO<Emplacement> {
         int idEmplacement;
         Cursor c;
 
-        c = db.rawQuery("SELECT * FROM " + Table_EMPLACEMENT + " WHERE LIBELLE = '" + Emplacement.getLibelle() + "'", null);
+        c = db.rawQuery("SELECT ID FROM " + Table_EMPLACEMENT + " WHERE LIBELLE = '" + Emplacement.getLibelle() + "'", null);
 
+        c.moveToFirst();
         idEmplacement = c.getInt(0);
 
         return idEmplacement;

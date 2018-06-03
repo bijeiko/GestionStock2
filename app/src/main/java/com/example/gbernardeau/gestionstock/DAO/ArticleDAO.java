@@ -211,8 +211,9 @@ public class ArticleDAO extends DAO<Article> {
         String idArticle;
         Cursor c;
 
-        c = db.rawQuery("SELECT * FROM " + Table_ARTICLE + " WHERE LIBELLE = '" + Article.getCode() + "'", null);
+        c = db.rawQuery("SELECT ID FROM " + Table_ARTICLE + " WHERE LIBELLE = '" + Article.getCode() + "'", null);
 
+        c.moveToFirst();
         idArticle = c.getString(0);
 
         return idArticle;

@@ -60,7 +60,7 @@ public class EtatDAO extends DAO<Etat> {
         long insert;
         res = false;
         ContentValues mavaleur = new ContentValues();
-        mavaleur.put(COL_LIBELLE_ETAT, ma.getLibelle());
+        mavaleur.put(COL_LIBELLE_ETAT, ma.getLibelle().toString());
         insert = db.insert(Table_ETAT, null, mavaleur);
         if (insert != -1) {
             res = true;
@@ -139,10 +139,12 @@ public class EtatDAO extends DAO<Etat> {
         int idEtat;
         Cursor c;
 
-        c = db.rawQuery("SELECT * FROM " + Table_ETAT + " WHERE LIBELLE = '" + Etat.getLibelle() + "'", null);
+        System.out.println("SELECT * FROM " + Table_ETAT + " WHERE LIBELLE = '" + Etat.getLibelle() + "'");
+        c = db.rawQuery("SELECT ID FROM " + Table_ETAT + " WHERE LIBELLE = '" + Etat.getLibelle() + "'", null);
 
+        c.moveToFirst();
         idEtat = c.getInt(0);
-
+        ;
         return idEtat;
     }
 
