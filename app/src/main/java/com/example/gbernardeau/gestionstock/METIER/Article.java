@@ -10,19 +10,19 @@ package com.example.gbernardeau.gestionstock.METIER;
 
 public class Article {
     private String code;
-    private String designation;
+    private String libelle;
     private Integer stock;
     private Integer idfam;
     private Integer idemp;
 
     /**
      * @param code est une chaîne de caractère
-     * @param designation est une chaîne de caractère
+     * @param libelle est une chaîne de caractère
      * @param stock est un entier
      */
-    public Article(String code, String designation, Integer stock,Integer idemp, Integer idfam) {
+    public Article(String code, String libelle, Integer stock,Integer idemp, Integer idfam) {
         this.code = code;
-        this.designation = designation;
+        this.libelle = libelle;
         this.stock = stock;
         this.idemp = idemp;
         this.idfam = idfam;
@@ -30,13 +30,13 @@ public class Article {
 
     /**
      * Constructeur optionnel ne prenant pas en compte le code (l'id d'article).
-     * @param designation
+     * @param libelle
      * @param stock
      * @param idemp
      * @param idfam
      */
-    public Article(String designation, Integer stock, Integer idemp, Integer idfam){
-        this.designation = designation;
+    public Article(String libelle, Integer stock, Integer idemp, Integer idfam){
+        this.libelle = libelle;
         this.stock = stock;
         this.idemp = idemp;
         this.idfam = idfam;
@@ -57,14 +57,14 @@ public class Article {
     /**
      Permet d'obtenir la désignation.
      */
-    public String getDesignation() {
-        return designation;
+    public String getLibelle() {
+        return libelle;
     }
     /**
      Permet de définir la désignation.
      */
-    public void setDesignation(String designation) {
-        this.designation = designation;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
     /**
      Permet d'obtenir le stock.
@@ -83,7 +83,7 @@ public class Article {
      * Permet de retourner une chaîne de caractère avec la valeur des attributs de Article.
      */
     public String toString(){
-        return "Code : " + code + "; Désignation : " + designation + " & Stock : " + stock;
+        return "Code : " + code + "; Désignation : " + libelle + " & Stock : " + stock;
     }
 
     public Integer getIdfam() {
