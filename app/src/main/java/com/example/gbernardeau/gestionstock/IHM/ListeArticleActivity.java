@@ -39,65 +39,79 @@ public class ListeArticleActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_articles);
 
-        //---------------------------------------------------------------------------------------------------------
-
-        setContentView(R.layout.list_articles);
         setTitle("Gestion des Stocks");
-        mListView = (ListView) findViewById(R.id.listview_article);
-        //mListView = (ListView) findViewById(R.id.listViewArticle);
 
-    //Co à la bdd
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         ArtDAO.open();
-    //récupération des données
-        Log.v("Test", "Test");
-        ArrayList<Article> ListArticle = ArtDAO.read();
-        Log.v("Test2", "Test2");
-    //Passage dans un ArrayList mais en STRING, pour être géré plus simplement.
-        ArrayList<String> Articles = new ArrayList<String>();
-    //Ajout data dans la liste.
-        for (Article unArticle : ListArticle) {
-            Log.v(unArticle.getCode().toString(), "Test code article");
-            Articles.add(unArticle.getCode() + " ensuite " + unArticle.getStock() + " ensuite " +
-                    unArticle.getIdemp()+ " ensuite " + unArticle.getIdfam() + " ensuite " +
-            unArticle.getDesignation());
-        }
-        Log.v(mListView.toString(), "");
-    //déco de la bdd
-        ArtDAO.close();
-    //L'adapter sert à afficher la liste dans la listeView.
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Articles);
-        mListView.setAdapter(adapter);
-        //---------------------------------------------------------------------------------------------------------
+        refresh_list();
 
         // Bouton navigation
-//        Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
-//        Accueilbtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent activityaccueil = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(activityaccueil);
-//            }
-//        });
-//        // Bouton Créer fiche
-//        CreateFiches = (Button) findViewById(R.id.CreateFiches);
-//        CreateFiches.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent activitycreationfiche = new Intent(getApplicationContext(), CreationFicheActivity.class);
-//                startActivity(activitycreationfiche);
-//            }
-//        });
-//        // Bouton Toutes les fiches
-//        ToutesLesFiches = (Button) findViewById(R.id.ToutesLesFiches);
-//        ToutesLesFiches.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent activityfiches = new Intent(getApplicationContext(), FichesActivity.class);
-//                startActivity(activityfiches);
-//            }
-//        });
+        Accueilbtn = (Button) findViewById(R.id.Accueilbtn);
+        Accueilbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activitiemain = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(activitiemain);
+            }
+        });
+        CreateFiches = (Button) findViewById(R.id.CreateFiches);
+        CreateFiches.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activitycreatefiche = new Intent(getApplicationContext(), CreationFicheActivity.class);
+                startActivity(activitycreatefiche);
+            }
+        });
+
+        ToutesLesFiches = (Button) findViewById(R.id.ToutesLesFiches);
+        ToutesLesFiches.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activityarticle = new Intent(getApplicationContext(), FichesActivity.class);
+                startActivity(activityarticle);
+            }
+        });
+    }
+
+    public void refresh_list(){
+
+        ListView listContent = (ListView)findViewById(R.id.eLVArticle);
+        ArticlesAdapter adapter = new ArticlesAdapter(this, R.layout.list_articles, ArtDAO.read());
+        listContent.setAdapter(adapter);
+//        listContent.setOnItemClickListener(OnClickItem);
+    }
+
+//        mListView = (ListView) findViewById(R.id.listview_article);
+        //mListView = (ListView) findViewById(R.id.listViewArticle);
+
+//    //Co à la bdd
+//        ArtDAO.open();
+//    //récupération des données
+//        Log.v("Test", "Test");
+//        ArrayList<Article> ListArticle = ArtDAO.read();
+//        Log.v("Test2", "Test2");
+//    //Passage dans un ArrayList mais en STRING, pour être géré plus simplement.
+//        ArrayList<String> Articles = new ArrayList<String>();
+//    //Ajout data dans la liste.
+//        for (Article unArticle : ListArticle) {
+//            Log.v(unArticle.getCode().toString(), "Test code article");
+//            Articles.add(unArticle.getCode() + " ensuite " + unArticle.getStock() + " ensuite " +
+//                    unArticle.getIdemp()+ " ensuite " + unArticle.getIdfam() + " ensuite " +
+//            unArticle.getDesignation());
+//        }
+//        Log.v(mListView.toString(), "");
+//    //déco de la bdd
+//        ArtDAO.close();
+//    //L'adapter sert à afficher la liste dans la listeView.
+//
+//        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Articles);
+//        mListView.setAdapter(adapter);
+        //---------------------------------------------------------------------------------------------------------
+
+
 
         //Ceci est un essai pour rendre "Code" cliquable pour le tri
         // EN COURS !
@@ -118,5 +132,4 @@ public class ListeArticleActivity extends AppCompatActivity {
 //                mListView.setAdapter(adapter);
 //            }
 //        });
-    }
 }

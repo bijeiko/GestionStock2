@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.gbernardeau.gestionstock.DAO.ArticleDAO;
 import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
 import com.example.gbernardeau.gestionstock.METIER.Article;
 import com.example.gbernardeau.gestionstock.METIER.Fiches;
@@ -19,10 +20,9 @@ public class ArticlesAdapter extends ArrayAdapter<Article> {
 
     String libemp;
     String libarticle;
-    String libetat;
+    String libfamille;
     Context context;
     int layoutResourceId;
-    private FichesDAO DAOF;
     ArrayList<Article> listArticle = null;
 
     public ArticlesAdapter(Context context, int layoutResourceId, ArrayList<Article> data) {
@@ -36,43 +36,46 @@ public class ArticlesAdapter extends ArrayAdapter<Article> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        FichesAdapter.MatiereHolder holder = null;
-        DAOF = new FichesDAO(this.getContext());
-        DAOF.open();
+        ArticlesAdapter.MatiereHolder holder = null;
+        ArticleDAO ArtDAO = new ArticleDAO(this.getContext());
+        ArtDAO.open();
         if(row == null)
         {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId, parent, false);
-            holder = new FichesAdapter.MatiereHolder();
-            holder.id = (TextView)row.findViewById(R.id.fiches_id);
-            holder.famille = (TextView)row.findViewById(R.id.fiches_famille);
-            holder.emplacement = (TextView)row.findViewById(R.id.fiches_emplacement);
-            holder.etat = (TextView)row.findViewById(R.id.fiches_etat);
+            holder = new ArticlesAdapter.MatiereHolder();
+            holder.code = (TextView)row.findViewById(R.id.article_code);
+            holder.designation = (TextView)row.findViewById(R.id.article_designation);
+            holder.stock = (TextView)row.findViewById(R.id.article_stock);
+            holder.emplacement = (TextView)row.findViewById(R.id.article_emplacement);
+            holder.famille = (TextView)row.findViewById(R.id.article_famille);
             row.setTag(holder);
         }
         else
         {
-            holder = (FichesAdapter.MatiereHolder)row.getTag();
+            holder = (ArticlesAdapter.MatiereHolder)row.getTag();
         }
         Article articles = listArticle.get(position);
 
-        libemp = DAOF.selectlibEmp(articles.getIdemp());
-        libarticle = DAOF.selectlibArticle(articles.getCode());
+        libemp = ArtDAO.selectlibEmp(articles.getIdemp());
+        libfamille = ArtDAO.selectlibFamille(articles.getIdfam());
 
-        holder.id.setText(articles.getCode());
-        holder.famille.setText(libarticle.toString());
+        holder.code.setText(articles.getCode());
+        holder.designation.setText(articles.getDesignation());
+        holder.stock.setText(Integer.toString(articles.getStock()));
         holder.emplacement.setText(libemp.toString());
-        holder.etat.setText(libetat.toString());
+        holder.famille.setText(libfamille.toString());
 
         return row;
     }
 
     static class MatiereHolder
     {
-        TextView id;
-        TextView famille;
+        TextView code;
+        TextView designation;
+        TextView stock;
         TextView emplacement;
-        TextView etat;
+        TextView famille;
     }
 
 }

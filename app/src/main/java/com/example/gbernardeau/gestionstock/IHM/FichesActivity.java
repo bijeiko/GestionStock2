@@ -34,7 +34,7 @@ import java.util.ArrayList;
  */
 
 public class FichesActivity extends AppCompatActivity {
-    private Button Accueilbtn, CreateFiches, ToutesLesFiches;
+    private Button Accueilbtn, CreateFiches, ToutLesArticles;
     private ListView Listfiches;
     private FichesDAO DAOF;
     private String libemp;
@@ -73,8 +73,8 @@ public class FichesActivity extends AppCompatActivity {
             }
         });
 
-        ToutesLesFiches = (Button) findViewById(R.id.ToutesLesFiches);
-        ToutesLesFiches.setOnClickListener(new View.OnClickListener() {
+        ToutLesArticles = (Button) findViewById(R.id.ToutLesArticles);
+        ToutLesArticles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent activityarticle = new Intent(getApplicationContext(), ListeArticleActivity.class);
