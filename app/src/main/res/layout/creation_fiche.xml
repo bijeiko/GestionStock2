@@ -274,16 +274,55 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="282dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/drawable"
                     android:orientation="horizontal"
                     android:weightSum="1">
 
-                    <Spinner
-                        android:id="@+id/Semplacement"
-                        android:layout_width="920dp"
-                        android:layout_height="44dp" />
+                    <EditText
+                        android:id="@+id/TEmplacement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textPersonName" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="238dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Rayon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Rayon"
+                        android:textAlignment="center"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="282dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/TRayon"
+                        android:layout_width="282dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textPersonName" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -332,18 +371,54 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="919dp"
+                        android:layout_width="419dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="0.06"
                         android:background="@drawable/drawable"
                         android:orientation="horizontal"
-                        android:weightSum="1"
-                        android:layout_weight="0.06">
+                        android:weightSum="1">
 
-                        <Spinner
-                            android:id="@+id/spinner2"
+                        <EditText
+                            android:id="@+id/TFamille"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:inputType="textPersonName" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="280dp"
+                        android:layout_height="42dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Stock"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:text="Stock"
+                            android:textAlignment="center"
+                            android:textSize="30dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="280dp"
+                        android:layout_height="42dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/TStock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:inputType="textPersonName" />
                     </LinearLayout>
 
                 </LinearLayout>
