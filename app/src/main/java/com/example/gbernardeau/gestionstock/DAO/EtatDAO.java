@@ -144,7 +144,7 @@ public class EtatDAO extends DAO<Etat> {
 
         c.moveToFirst();
         idEtat = c.getInt(0);
-        ;
+
         return idEtat;
     }
 

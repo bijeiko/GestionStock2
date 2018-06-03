@@ -126,7 +126,7 @@ public class CreationFicheActivity extends AppCompatActivity {
     public void add(){
 
         TEtat = (EditText) findViewById(R.id.TEtat);
-        Etat etat = new Etat(TEtat.toString());
+        Etat etat = new Etat(TEtat.getText().toString());
         EtatDAO EDAO = new EtatDAO(this);
         EDAO.open();
         EDAO.insert(etat);
@@ -134,7 +134,7 @@ public class CreationFicheActivity extends AppCompatActivity {
         EDAO.close();
 
         TRayon = (EditText) findViewById(R.id.TRayon);
-        Rayon rayon = new Rayon(TRayon.toString());
+        Rayon rayon = new Rayon(TRayon.getText().toString());
         RayonDAO RDAO = new RayonDAO(this);
         RDAO.open();
         RDAO.insert(rayon);
@@ -142,7 +142,7 @@ public class CreationFicheActivity extends AppCompatActivity {
         RDAO.close();
 
         TFamille = (EditText) findViewById(R.id.TFamille);
-        Famille famille = new Famille(TFamille.toString());
+        Famille famille = new Famille(TFamille.getText().toString());
         FamilleDAO FDAO = new FamilleDAO(this);
         FDAO.open();
         FDAO.insert(famille);
@@ -150,7 +150,7 @@ public class CreationFicheActivity extends AppCompatActivity {
         FDAO.close();
 
         TEmplacement = (EditText) findViewById(R.id.TEmplacement);
-        Emplacement emplacement = new Emplacement(idRayon, TEmplacement.toString());
+        Emplacement emplacement = new Emplacement(idRayon, TEmplacement.getText().toString());
         EmplacementDAO EmDAO = new EmplacementDAO(this);
         EmDAO.open();
         EmDAO.insert(emplacement);
@@ -160,7 +160,7 @@ public class CreationFicheActivity extends AppCompatActivity {
         TCode = (EditText) findViewById(R.id.TCode);
         TDesignation = (EditText) findViewById(R.id.TDesignation);
         TStock = (EditText) findViewById(R.id.TStock);
-        Article article = new Article(TCode.toString(), TDesignation.toString(), Integer.parseInt(TStock.getText().toString()), idEmplacement, idFamille);
+        Article article = new Article(TCode.getText().toString(), TDesignation.getText().toString(), Integer.parseInt(TStock.getText().toString()), idEmplacement, idFamille);
         ArticleDAO ArtDAO = new ArticleDAO(this);
         ArtDAO.open();
         ArtDAO.insert(article);
