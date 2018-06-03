@@ -124,6 +124,25 @@ public class ArticleDAO extends DAO<Article> {
         return unArticle;
     }
 
+    public String selectlibEmp(int id) {
+        Cursor res;
+        Log.v(Integer.toString(id), "-----------");
+        res = db.rawQuery("SELECT EMPLACEMENT.LIBELLE, RAYON.LIBELLE  FROM EMPLACEMENT INNER JOIN "+ Table_ARTICLE +" ON EMPLACEMENT.ID = IDEMP INNER JOIN RAYON ON EMPLACEMENT.IDRAYON = RAYON.ID WHERE IDEMP = " + id, null);
+        res.moveToFirst();
+//        Log.v(res.getString(0), "test3");
+        return res.getString(1) + "-" + res.getString(0);
+    }
+
+    public String selectlibFamille(int id) {
+        Cursor res;
+        System.out.println("SELECT FAMILLE.LIBELLE FROM FAMILLE INNER JOIN "+ Table_ARTICLE +" ON FAMILLE.ID = IDFAM WHERE IDFAM = " + id);
+        //        Log.v("SELECT FAMILLE.LIBELLE FROM FAMILLE INNER JOIN "+ Table_FICHES +" ON FAMILLE.ID = IDFAM WHERE IDARTICLE = " + id + " ", "Test req");
+        res = db.rawQuery("SELECT FAMILLE.LIBELLE FROM FAMILLE INNER JOIN "+ Table_ARTICLE +" ON FAMILLE.ID = IDFAM WHERE IDFAM = " + id, null);
+        res.moveToFirst();
+        Log.v(res.getString(0), "test4");
+        return res.getString(0);
+    }
+
     /**
      * Fonction retournant un ArrayList peuplé de curseur ayant des données qui sont ajoutées à chaque tour de boucle.
      * @return listArticle

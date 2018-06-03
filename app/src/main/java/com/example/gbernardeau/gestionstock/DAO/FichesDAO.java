@@ -147,13 +147,10 @@ public class FichesDAO extends DAO<Fiches> {
         return res.getString(0);
     }
 
-    public String selectlibEtat(String id) {
+    public String selectlibEtat(int id) {
         Cursor res;
-        System.out.println("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.CODE = IDARTICLE WHERE IDARTICLE = " + id);
-        //        Log.v("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.ID = IDARTICLE WHERE IDARTICLE = " + id + " ", "Test req");
-        res = db.rawQuery("SELECT ARTICLE.LIBELLE FROM ARTICLE INNER JOIN "+ Table_FICHES +" ON ARTICLE.CODE = IDARTICLE WHERE IDARTICLE = '" + id + "'", null);
+        res = db.rawQuery("SELECT ETAT.LIBELLE FROM ETAT INNER JOIN "+ Table_FICHES +" ON ETAT.ID = IDETAT WHERE IDETAT = " + id, null);
         res.moveToFirst();
-        Log.v(res.getString(0), "test4");
         return res.getString(0);
     }
     /**
@@ -174,15 +171,10 @@ public class FichesDAO extends DAO<Fiches> {
         res.moveToFirst();
         while (!res.isAfterLast()) {
             id = res.getInt(0);
-            Log.v(res.getString(0), "id");
             qte = res.getInt(1);
-            Log.v(res.getString(1), "Quantite");
             idetat = res.getInt(2);
-            Log.v(res.getString(2), "IdEtat");
             idarticle = res.getString(3);
-            Log.v(res.getString(3), "IdArticle");
             idemp = res.getInt(4);
-            Log.v(res.getString(4), "IdEmp");
             ma = new Fiches(id, qte, idetat, idarticle, idemp);
             listFiches.add(ma);
 
