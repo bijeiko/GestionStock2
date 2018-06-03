@@ -32,6 +32,11 @@ public class Emplacement {
 
     }
 
+    public Emplacement(Integer idrayon, String libelle){
+        this.idrayon=idrayon;
+        this.libelle=libelle;
+    }
+
     /**
      *Permet de retourner l'id.
      * @return id

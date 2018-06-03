@@ -28,6 +28,11 @@ public class Famille_Article {
         this.codearticle = codearticle;
     }
 
+    public Famille_Article(Integer idfamille, String codearticle){
+        this.idfamille=idfamille;
+        this.idfamille=idfamille;
+    }
+
     /**
      * Permet d'obtenir l'id.
      * @return id

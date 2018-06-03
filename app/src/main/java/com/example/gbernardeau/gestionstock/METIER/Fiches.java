@@ -31,6 +31,13 @@ public class Fiches {
         this.idemp = idemp;
     }
 
+    public Fiches(Integer quantite, Integer idetat, String idarticle, Integer idemp){
+        this.quantite = quantite;
+        this.idetat = idetat;
+        this.idarticle = idarticle;
+        this.idemp = idemp;
+    }
+
     public Integer getId() {
         return id;
     }

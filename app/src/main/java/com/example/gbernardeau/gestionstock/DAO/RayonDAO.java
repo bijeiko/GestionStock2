@@ -138,4 +138,15 @@ public class RayonDAO extends DAO<Rayon> {
         return listRayon;
     }
 
+    public int selectId(Rayon Rayon){
+        int idRayon;
+        Cursor c;
+
+        c = db.rawQuery("SELECT * FROM " + Table_RAYON + " WHERE LIBELLE = '" + Rayon.getLibelle() + "'", null);
+
+        idRayon = c.getInt(0);
+
+        return idRayon;
+    }
+
 }

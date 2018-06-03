@@ -25,6 +25,10 @@ public class Famille {
         this.libelle = libelle;
     }
 
+    public Famille(String libelle){
+        this.libelle=libelle;
+    }
+
     /**
      * Permet de retourner l'Id.
      * @return id

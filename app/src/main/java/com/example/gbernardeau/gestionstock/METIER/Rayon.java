@@ -20,6 +20,10 @@ public class Rayon {
         this.libelle = libelle;
     }
 
+    public Rayon(String libelle){
+        this.libelle=libelle;
+    }
+
     /**
      * Permet de retourner l'id.
      * @return id

@@ -206,4 +206,15 @@ public class ArticleDAO extends DAO<Article> {
 
         return listArticle;
     }
+
+    public String selectId(Article Article){
+        String idArticle;
+        Cursor c;
+
+        c = db.rawQuery("SELECT * FROM " + Table_ARTICLE + " WHERE LIBELLE = '" + Article.getCode() + "'", null);
+
+        idArticle = c.getString(0);
+
+        return idArticle;
+    }
 }

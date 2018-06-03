@@ -28,6 +28,13 @@ public class Article {
         this.idfam = idfam;
     }
 
+    public Article(String designation, Integer stock, Integer idemp, Integer idfam){
+        this.designation = designation;
+        this.stock = stock;
+        this.idemp = idemp;
+        this.idfam = idfam;
+    }
+
     /**
     Permet d'obtenir le code.
      */

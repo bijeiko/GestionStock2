@@ -139,4 +139,15 @@ public class FamilleDAO extends DAO<Famille> {
         return listFamille;
     }
 
+    public int selectId(Famille Famille){
+        int idFamille;
+        Cursor c;
+
+        c = db.rawQuery("SELECT * FROM " + Table_FAMILLE + " WHERE LIBELLE = '" + Famille.getLibelle() + "'", null);
+
+        idFamille = c.getInt(0);
+
+        return idFamille;
+    }
+
 }

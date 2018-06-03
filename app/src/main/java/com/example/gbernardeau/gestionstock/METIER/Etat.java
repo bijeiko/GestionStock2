@@ -20,6 +20,11 @@ public class Etat {
         this.id = id;
         this.libelle = libelle;
     }
+
+    public Etat(String libelle){
+        this.libelle=libelle;
+    }
+
     /**
      Permet d'obtenir l'Id.
      */

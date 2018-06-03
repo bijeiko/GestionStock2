@@ -150,4 +150,15 @@ public class EmplacementDAO extends DAO<Emplacement> {
         return listEmplacement;
     }
 
+    public int selectId(Emplacement Emplacement){
+        int idEmplacement;
+        Cursor c;
+
+        c = db.rawQuery("SELECT * FROM " + Table_EMPLACEMENT + " WHERE LIBELLE = '" + Emplacement.getLibelle() + "'", null);
+
+        idEmplacement = c.getInt(0);
+
+        return idEmplacement;
+    }
+
 }
