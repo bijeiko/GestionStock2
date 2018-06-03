@@ -135,4 +135,15 @@ public class EtatDAO extends DAO<Etat> {
         return listEtat;
     }
 
+    public int selectId(Etat Etat){
+        int idEtat;
+        Cursor c;
+
+        c = db.rawQuery("SELECT * FROM " + Table_ETAT + " WHERE LIBELLE = '" + Etat.getLibelle() + "'", null);
+
+        idEtat = c.getInt(0);
+
+        return idEtat;
+    }
+
 }
