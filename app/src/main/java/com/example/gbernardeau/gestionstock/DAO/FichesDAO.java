@@ -70,7 +70,10 @@ public class FichesDAO extends DAO<Fiches> {
         long insert;
         res = false;
         ContentValues mavaleur = new ContentValues();
-        mavaleur.put(COL_QUANTITE, ma.getQuantite());
+        mavaleur.put(COL_QUANTITE, ma.getQuantite().toString());
+        mavaleur.put(COL_IDETAT, ma.getIdetat().toString());
+        mavaleur.put(COL_IDARTICLE, ma.getIdarticle().toString());
+        mavaleur.put(COL_IDEMP, ma.getIdemp().toString());
         insert = db.insert(Table_FICHES, null, mavaleur);
         if (insert != -1) {
             res = true;

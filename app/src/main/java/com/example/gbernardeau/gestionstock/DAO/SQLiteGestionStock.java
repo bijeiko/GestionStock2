@@ -7,7 +7,7 @@ import android.util.Log;
 
 
 public class SQLiteGestionStock extends SQLiteOpenHelper{
-    private static final int DATABASE_VERSION = 164;
+    private static final int DATABASE_VERSION = 166;
     private static final String DATABASE_NAME = "GestionDesStock";
     private Context context = null;
     public SQLiteGestionStock(Context context){
@@ -25,21 +25,21 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
             db.execSQL("DROP TABLE IF EXISTS ARTICLE");
             db.execSQL("DROP TABLE IF EXISTS FICHE");
 
-            db.execSQL("CREATE TABLE ETAT (ID integer PRIMARY KEY autoincrement, LIBELLE CHAR(50) NOT NULL)");
+            db.execSQL("CREATE TABLE ETAT (ID integer PRIMARY KEY autoincrement, LIBELLE TEXT NOT NULL)");
             db.execSQL("INSERT INTO ETAT (libelle) VALUES ('Fini')");
             db.execSQL("INSERT INTO ETAT (libelle) VALUES ('En Attente')");
 
-            db.execSQL("CREATE TABLE RAYON (ID integer PRIMARY KEY autoincrement, LIBELLE CHAR(50) NOT NULL)");
+            db.execSQL("CREATE TABLE RAYON (ID integer PRIMARY KEY autoincrement, LIBELLE TEXT NOT NULL)");
             db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC5')");
             db.execSQL("INSERT INTO RAYON (libelle) VALUES ('RC8')");
 
-            db.execSQL("CREATE TABLE EMPLACEMENT (ID integer PRIMARY KEY autoincrement, IDRAYON integer NOT NULL, LIBELLE CHAR(32) NOT NULL, CONSTRAINT fk_idrayon FOREIGN KEY (IDRAYON) REFERENCES RAYON (ID))");
+            db.execSQL("CREATE TABLE EMPLACEMENT (ID integer PRIMARY KEY autoincrement, IDRAYON integer NOT NULL, LIBELLE TEXT NOT NULL, CONSTRAINT fk_idrayon FOREIGN KEY (IDRAYON) REFERENCES RAYON (ID))");
             db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (1, 'A')");
             db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (2, 'B')");
             db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (1, 'C')");
             db.execSQL("INSERT INTO EMPLACEMENT (idrayon, libelle) VALUES (2, 'D')");
 
-            db.execSQL("CREATE TABLE FAMILLE (ID integer PRIMARY KEY autoincrement, LIBELLE CHAR(150) NOT NULL)");
+            db.execSQL("CREATE TABLE FAMILLE (ID integer PRIMARY KEY autoincrement, LIBELLE TEXT NOT NULL)");
             db.execSQL("INSERT INTO FAMILLE (libelle) VALUES ('Legume')");
             db.execSQL("INSERT INTO FAMILLE (libelle) VALUES ('Fruits')");
 

@@ -66,7 +66,8 @@ public class EmplacementDAO extends DAO<Emplacement> {
         long insert;
         res = false;
         ContentValues mavaleur = new ContentValues();
-        mavaleur.put(COL_LIBELLE_EMPLACEMENT, ma.getLibelle());
+        mavaleur.put(COL_ID_RAYON, ma.getId_rayon());
+        mavaleur.put(COL_LIBELLE_EMPLACEMENT, ma.getLibelle().toString());
         insert = db.insert(Table_EMPLACEMENT, null, mavaleur);
         if (insert != -1) {
             res = true;
@@ -153,8 +154,10 @@ public class EmplacementDAO extends DAO<Emplacement> {
     public int selectId(Emplacement Emplacement){
         int idEmplacement;
         Cursor c;
-
-        c = db.rawQuery("SELECT ID FROM " + Table_EMPLACEMENT + " WHERE LIBELLE = '" + Emplacement.getLibelle() + "'", null);
+        System.out.println(Emplacement.getLibelle());
+        System.out.println("SELECT ID FROM " + Table_EMPLACEMENT + " WHERE LIBELLE = '" + Emplacement.getLibelle() + "'");
+//        c = db.rawQuery("SELECT ID FROM EMPLACEMENT WHERE LIBELLE = 'E43'", null);
+        c = db.rawQuery("SELECT " + COL_ID_EMPLACEMENT + " FROM " + Table_EMPLACEMENT + " WHERE LIBELLE = '" + Emplacement.getLibelle() + "'", null);
 
         c.moveToFirst();
         idEmplacement = c.getInt(0);

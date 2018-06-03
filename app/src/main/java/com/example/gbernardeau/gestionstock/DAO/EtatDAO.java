@@ -139,7 +139,7 @@ public class EtatDAO extends DAO<Etat> {
         int idEtat;
         Cursor c;
 
-        System.out.println("SELECT * FROM " + Table_ETAT + " WHERE LIBELLE = '" + Etat.getLibelle() + "'");
+        System.out.println("SELECT ID FROM " + Table_ETAT + " WHERE LIBELLE = '" + Etat.getLibelle() + "'");
         c = db.rawQuery("SELECT ID FROM " + Table_ETAT + " WHERE LIBELLE = '" + Etat.getLibelle() + "'", null);
 
         c.moveToFirst();

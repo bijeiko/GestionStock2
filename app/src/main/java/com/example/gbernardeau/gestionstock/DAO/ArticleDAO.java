@@ -21,8 +21,8 @@ public class ArticleDAO extends DAO<Article> {
     private SQLiteGestionStock dbGestionStock;
 
     private static final String Table_ARTICLE = "ARTICLE";
-    private static final String COL_ID_ARTICLE = "ID";
-    private static final String COL_DESIGNATION_ARTICLE = "DESIGNATION";
+    private static final String COL_ID_ARTICLE = "CODE";
+    private static final String COL_DESIGNATION_ARTICLE = "LIBELLE";
     private static final String COL_ID_FAMILLE = "IDFAM";
     private static final String COL_ID_EMPLACEMENT = "IDEMP";
     private static final String COL_STOCK_ARTICLE = "STOCK";
@@ -66,8 +66,11 @@ public class ArticleDAO extends DAO<Article> {
         long insert;
         res = false;
         ContentValues mavaleur = new ContentValues();
-        mavaleur.put(COL_DESIGNATION_ARTICLE, ma.getDesignation());
+        mavaleur.put(COL_ID_ARTICLE, ma.getCode().toString());
+        mavaleur.put(COL_DESIGNATION_ARTICLE, ma.getLibelle().toString());
         mavaleur.put(COL_STOCK_ARTICLE, ma.getStock());
+        mavaleur.put(COL_ID_EMPLACEMENT, ma.getIdemp());
+        mavaleur.put(COL_ID_FAMILLE, ma.getIdfam());
         insert = db.insert(Table_ARTICLE, null, mavaleur);
         if (insert != -1) {
             res = true;
@@ -86,7 +89,7 @@ public class ArticleDAO extends DAO<Article> {
         int update;
         res = false;
         ContentValues mavaleur = new ContentValues();
-        mavaleur.put(COL_DESIGNATION_ARTICLE, obj.getDesignation());
+        mavaleur.put(COL_DESIGNATION_ARTICLE, obj.getLibelle());
         mavaleur.put(COL_STOCK_ARTICLE, obj.getStock());
         update = db.update(Table_ARTICLE, mavaleur, null, null);
         if (update > 0) {
@@ -210,8 +213,8 @@ public class ArticleDAO extends DAO<Article> {
     public String selectId(Article Article){
         String idArticle;
         Cursor c;
-
-        c = db.rawQuery("SELECT ID FROM " + Table_ARTICLE + " WHERE LIBELLE = '" + Article.getCode() + "'", null);
+        System.out.println("SELECT CODE FROM " + Table_ARTICLE + " WHERE LIBELLE = '" + Article.getLibelle() + "'");
+        c = db.rawQuery("SELECT CODE FROM " + Table_ARTICLE + " WHERE LIBELLE = '" + Article.getLibelle() + "'", null);
 
         c.moveToFirst();
         idArticle = c.getString(0);

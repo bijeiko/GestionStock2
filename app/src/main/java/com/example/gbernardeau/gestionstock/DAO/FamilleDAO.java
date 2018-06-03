@@ -59,7 +59,7 @@ public class FamilleDAO extends DAO<Famille> {
         long insert;
         res = false;
         ContentValues mavaleur = new ContentValues();
-        mavaleur.put(COL_LIBELLE_FAMILLE, ma.getLibelle());
+        mavaleur.put(COL_LIBELLE_FAMILLE, ma.getLibelle().toString());
         insert = db.insert(Table_FAMILLE, null, mavaleur);
         if (insert != -1) {
             res = true;
