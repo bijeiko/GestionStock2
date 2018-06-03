@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.gbernardeau.gestionstock.IHM.FichesActivity">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="1264dp"
         android:layout_height="647dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="9dp">
+        android:orientation="vertical">
 
         <Space
             android:layout_width="match_parent"
@@ -72,10 +67,10 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/ToutLesArticles"
+                    android:id="@+id/ToutesLesFiches"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Tout les articles" />
+                    android:text="Toutes les fiches" />
 
             </LinearLayout>
 
@@ -105,47 +100,65 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
 
+                    <Space
+                        android:layout_width="33dp"
+                        android:layout_height="30dp" />
+
                     <TextView
                         android:id="@+id/textView"
-                        android:layout_width="89dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_column="0"
                         android:gravity="center"
-                        android:text="ID"
+                        android:text="Code"
                         android:textAlignment="center"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="30dp" />
 
+                    <Space
+                        android:layout_width="25dp"
+                        android:layout_height="40dp" />
+
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_width="450dp"
+                        android:layout_width="350dp"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:gravity="center"
-                        android:text="Article"
+                        android:text="Désignation"
                         android:textAlignment="center"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textSize="30dp" />
 
                     <TextView
                         android:id="@+id/textView3"
-                        android:layout_width="520dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
                         android:gravity="center"
-                        android:text="Emplacement"
+                        android:text="Stock"
                         android:textAlignment="center"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textSize="30dp" />
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="215dp"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_column="3"
-                        android:text="Etat"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Emplacement"
                         android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="30dp" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:text="Famille"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textSize="30dp" />
 
                 </TableRow>
@@ -157,7 +170,7 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/eLVFiches"
+            android:id="@+id/eLVArticle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="11.03"
