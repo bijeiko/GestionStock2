@@ -7,7 +7,7 @@ import android.util.Log;
 
 
 public class SQLiteGestionStock extends SQLiteOpenHelper{
-    private static final int DATABASE_VERSION = 163;
+    private static final int DATABASE_VERSION = 164;
     private static final String DATABASE_NAME = "GestionDesStock";
     private Context context = null;
     public SQLiteGestionStock(Context context){
@@ -51,6 +51,21 @@ public class SQLiteGestionStock extends SQLiteOpenHelper{
             db.execSQL("INSERT INTO FICHE (quantite, idetat, idarticle, idemp) VALUES (5, 1, 'a45', 1)");
             db.execSQL("INSERT INTO FICHE (quantite, idetat, idarticle, idemp) VALUES (2, 2, 'a287', 2)");
 
+
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS LibEtat ON ETAT (LIBELLE)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS LibRayon ON RAYON (LIBELLE)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS LibFamille ON FAMILLE (LIBELLE)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS IdRayon ON EMPLACEMENT (IDRAYON)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS LibEmplacement ON EMPLACEMENT (LIBELLE)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS CodeArticle ON ARTICLE (CODE)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS LibArticle ON ARTICLE (LIBELLE)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS StockArticle ON ARTICLE (STOCK)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS IdEmp ON ARTICLE (IDEMP)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS IdFam ON ARTICLE (IDFAM)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS Quantite ON Fiches (QUANTITE)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS IdEtat ON ARTICLE (IDETAT)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS IdArticle ON ARTICLE (IDARTICLE)");
+            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS IdEMp ON ARTICLE (IDEMP)");
 
         } catch (Exception e) {
             e.printStackTrace();
