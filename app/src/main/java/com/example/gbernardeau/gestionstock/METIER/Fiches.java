@@ -20,10 +20,10 @@ public class Fiches {
     private Integer id;
     private Integer quantite;
     private Integer idetat;
-    private Integer idarticle;
+    private String idarticle;
     private Integer idemp;
 
-    public Fiches(Integer id, Integer quantite, Integer idetat, Integer idarticle, Integer idemp) {
+    public Fiches(Integer id, Integer quantite, Integer idetat, String idarticle, Integer idemp) {
         this.id = id;
         this.quantite = quantite;
         this.idetat = idetat;
@@ -55,11 +55,11 @@ public class Fiches {
         this.idetat = idetat;
     }
 
-    public Integer getIdarticle() {
+    public String getIdarticle() {
         return idarticle;
     }
 
-    public void setIdarticle(Integer idarticle) {
+    public void setIdarticle(String idarticle) {
         this.idarticle = idarticle;
     }
 
@@ -69,6 +69,17 @@ public class Fiches {
 
     public void setIdemp(Integer idemp) {
         this.idemp = idemp;
+    }
+
+    @Override
+    public String toString() {
+        return "Fiches{" +
+                "id=" + id +
+                ", quantite=" + quantite +
+                ", idetat=" + idetat +
+                ", idarticle='" + idarticle + '\'' +
+                ", idemp=" + idemp +
+                '}';
     }
 }
 
