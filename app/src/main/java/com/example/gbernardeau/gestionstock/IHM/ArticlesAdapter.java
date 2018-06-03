@@ -1,51 +1,49 @@
 package com.example.gbernardeau.gestionstock.IHM;
 
-/**
- * Created by gbernardeau on 31/05/2018.
- */
-import java.util.ArrayList;
-
-import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
-import com.example.gbernardeau.gestionstock.METIER.Fiches;
-import com.example.gbernardeau.gestionstock.R;
-
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class FichesAdapter extends ArrayAdapter<Fiches> {
+import com.example.gbernardeau.gestionstock.DAO.FichesDAO;
+import com.example.gbernardeau.gestionstock.METIER.Article;
+import com.example.gbernardeau.gestionstock.METIER.Fiches;
+import com.example.gbernardeau.gestionstock.R;
+
+import java.util.ArrayList;
+
+public class ArticlesAdapter extends ArrayAdapter<Article> {
+
     String libemp;
     String libarticle;
     String libetat;
     Context context;
     int layoutResourceId;
     private FichesDAO DAOF;
-    ArrayList<Fiches> listfiches = null;
+    ArrayList<Article> listArticle = null;
 
-    public FichesAdapter(Context context, int layoutResourceId, ArrayList<Fiches> data) {
+    public ArticlesAdapter(Context context, int layoutResourceId, ArrayList<Article> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
-        this.listfiches = data;
+        this.listArticle = data;
 
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        MatiereHolder holder = null;
+        FichesAdapter.MatiereHolder holder = null;
         DAOF = new FichesDAO(this.getContext());
         DAOF.open();
         if(row == null)
         {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId, parent, false);
-            holder = new MatiereHolder();
+            holder = new FichesAdapter.MatiereHolder();
             holder.id = (TextView)row.findViewById(R.id.fiches_id);
             holder.famille = (TextView)row.findViewById(R.id.fiches_famille);
             holder.emplacement = (TextView)row.findViewById(R.id.fiches_emplacement);
@@ -54,15 +52,14 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         }
         else
         {
-            holder = (MatiereHolder)row.getTag();
+            holder = (FichesAdapter.MatiereHolder)row.getTag();
         }
-        Fiches fiches = listfiches.get(position);
+        Article articles = listArticle.get(position);
 
-        libemp = DAOF.selectlibEmp(fiches.getIdemp());
-        libarticle = DAOF.selectlibArticle(fiches.getIdarticle());
-        libetat = DAOF.selectlibEtat(fiches.getIdetat());
+        libemp = DAOF.selectlibEmp(articles.getIdemp());
+        libarticle = DAOF.selectlibArticle(articles.getCode());
 
-        holder.id.setText(fiches.getId().toString());
+        holder.id.setText(articles.getCode());
         holder.famille.setText(libarticle.toString());
         holder.emplacement.setText(libemp.toString());
         holder.etat.setText(libetat.toString());
@@ -77,4 +74,5 @@ public class FichesAdapter extends ArrayAdapter<Fiches> {
         TextView emplacement;
         TextView etat;
     }
+
 }

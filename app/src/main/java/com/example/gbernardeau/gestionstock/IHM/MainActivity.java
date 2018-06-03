@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
          */
         setContentView(R.layout.activity_main);
 
+        setTitle("Gestion des Stocks");
+
         /**
          * Fonctions associées à la redirection lors d'un click sur les boutons
          */

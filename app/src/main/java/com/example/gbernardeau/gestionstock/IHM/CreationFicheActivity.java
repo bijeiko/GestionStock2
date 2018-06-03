@@ -35,7 +35,7 @@ public class CreationFicheActivity extends AppCompatActivity {
      * celui de redirection à Toutes les fiches
      * celui de redirection à Tout les articles
      */
-    private Button bSearch, bTri, accueilbtn, ToutesLesFiches, ToutLesArticles, btn_annuler;
+    private Button bSearch, bTri, accueilbtn, ToutesLesFiches, ToutLesArticles, btn_annuler, btn_ajouter;
 
     /**
      * A la création de la page, des boutons sont créés grâce à la View(R.Layout.creation_fiche)
@@ -46,6 +46,8 @@ public class CreationFicheActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creation_fiche);
+
+        setTitle("Gestion des Stocks");
 
         // Bouton navigation
         accueilbtn = (Button) findViewById(R.id.accueilbtn);
@@ -83,6 +85,15 @@ public class CreationFicheActivity extends AppCompatActivity {
             }
         });
 
+        btn_ajouter = (Button) findViewById(R.id.btn_ajouter);
+        btn_ajouter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activityarticle = new Intent(getApplicationContext(), ListeArticleActivity.class);
+                startActivity(activityarticle);
+            }
+        });
+
         //afficher le SQL dans la listview (Exemple avec Emplacement)
         EmplacementDAO emplacementDao = new EmplacementDAO(this);
         //Co à la bdd
@@ -101,15 +112,15 @@ public class CreationFicheActivity extends AppCompatActivity {
         emplacementDao.close();
 
 
-        Spinner spinner = (Spinner) findViewById(R.id.Semplacement);
-        Log.v("puis ici", "emplacement");
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, Emplacements.get(0), android.R.layout.simple_spinner_item);
-        Log.v("et enfin ici", "emplacement");
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+//        Spinner spinner = (Spinner) findViewById(R.id.Semplacement);
+//        Log.v("puis ici", "emplacement");
+//        // Create an ArrayAdapter using the string array and a default spinner layout
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, Emplacements.get(0), android.R.layout.simple_spinner_item);
+//        Log.v("et enfin ici", "emplacement");
+//        // Specify the layout to use when the list of choices appears
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        // Apply the adapter to the spinner
+//        spinner.setAdapter(adapter);
 
     }
 }
